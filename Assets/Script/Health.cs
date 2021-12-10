@@ -49,8 +49,15 @@ public class Health : MonoBehaviour
             // hurt
         }else if(!dead)
         {
+            if (this.gameObject.tag == "player")
+                this.GetComponent<PlayerMovement>().enabled = false;
+            if (this.gameObject.tag == "enemy")
+                this.GetComponent<EnemyPatrol>().enabled = false;
+
+            //this.GetComponent<EnemyPatrol>().enabled = false;
             anim.SetTrigger("die");
-            Destroy(gameObject);
+
+            Destroy(gameObject, 1f);
 /*
             if (this.gameObject.tag == "player")
                 Destroy(this);
