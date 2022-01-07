@@ -4,44 +4,39 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    [Header ("Helath")]
-    public HealthBar healthBar;
-    public int maxHelth = 100;
-    public int currentHealth;
+    [Header ("Health")]
+    public Bar healthBar;
+    public float maxHelth = 100;
     public bool dead;
+    private float currentHealth;
     private Animator anim;
 
     [Header("iFrames")]
-    [SerializeField] private float iFrameDuration;
-    [SerializeField] private float numberOfFlashes;
+    [SerializeField] private float iFrameDuration = 0.0f;
+    [SerializeField] private float numberOfFlashes = 0.0f;
     private SpriteRenderer spriteRend;
-
 
     private void Awake()
     {
         anim = GetComponent<Animator>();
         spriteRend = GetComponent<SpriteRenderer>();
 
+        
         currentHealth = maxHelth;
-
+        
+        
         if (this.gameObject.tag == "player")
-            healthBar.SetMaxHealth(maxHelth);
+        {
+            healthBar.SetMaxValue(maxHelth);
+        }
     }
 
-/*    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            TakeDamage(10);
-        }
-    }*/
-
-    public void TakeDamage (int _damage)
+    public void TakeDamage (float _damage)
     {
         currentHealth -= _damage;
         
         if (this.gameObject.tag == "player")
-            healthBar.SetHealth(currentHealth);
+            healthBar.SetValue(currentHealth);
 
         if(currentHealth > 0)
         {
@@ -51,18 +46,11 @@ public class Health : MonoBehaviour
         {
             if (this.gameObject.tag == "player")
                 this.GetComponent<PlayerMovement>().enabled = false;
+                this.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             if (this.gameObject.tag == "enemy")
-                this.GetComponent<EnemyPatrol>().enabled = false;
+                this.GetComponent<EnemyController>().enabled = false;
 
-            //this.GetComponent<EnemyPatrol>().enabled = false;
-            anim.SetTrigger("die");
-
-            Destroy(gameObject, 1f);
-/*
-            if (this.gameObject.tag == "player")
-                Destroy(this);
-            if (this.gameObject.tag == "enemy")
-                Destroy(this);*/
+            anim.SetTrigger("die");       
 
             dead = true;
         }
@@ -88,5 +76,26 @@ public class Health : MonoBehaviour
             Physics2D.IgnoreLayerCollision(9, 10, false);
         if (this.gameObject.tag == "enemy")
             Physics2D.IgnoreLayerCollision(10, 9, false);
+    }
+
+    public void addHealth(float value)
+    {
+        currentHealth += value;
+        if(currentHealth > maxHelth)
+        {
+            currentHealth = maxHelth;
+        }
+        healthBar.SetValue(currentHealth);
+    }
+
+    private void PlayerSkills_OnSkillUnlocked(object sender, PlayerSkills.OnSkillUnlockedEventArgs e)
+    {
+        switch(e.skillType)
+        {
+            case PlayerSkills.SkillType.HealthMax :
+                maxHelth *= 1.5f;
+                healthBar.SetMaxValue(maxHelth);
+                break;
+        }
     }
 }

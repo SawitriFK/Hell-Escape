@@ -6,9 +6,9 @@ using UnityEngine.UI;
 
 public class ChangeScene : MonoBehaviour
 {
-    [SerializeField] private Button button;
+    [SerializeField] private Button button = null;
 
-    [SerializeField] private string nextScene;
+    [SerializeField] private string nextScene = "Main Menu";
 
     void Start()
     {

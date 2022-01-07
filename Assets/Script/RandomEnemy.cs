@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class RandomEnemy : MonoBehaviour
 {
-    [SerializeField] private Transform[] spawnPoints;
-    [SerializeField] private GameObject[] enemyPrefabs;
+    [SerializeField] private Transform[] spawnPoints = null;
+    [SerializeField] private GameObject[] enemyPrefabs = null;
     [SerializeField] private int enemy;
     [SerializeField] private bool toSpwan = true;
 

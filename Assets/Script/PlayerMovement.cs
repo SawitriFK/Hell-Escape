@@ -4,79 +4,89 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private float speedWalk;
-    [SerializeField] private float speedJump;
-    [SerializeField] private Animator animator;
-    [SerializeField]private LayerMask groundLayer;
+    public CharacterController2D controller;
+    public PlayerBattle fight;
 
+    public float runSpeed = 40f;
 
+    float horizontalMove = 0f;
+    float lastDashed = -2f;
+    public float dashCooldown = .6f;
+    bool jump = false;
+    bool dash = false;
+    public bool invinsible = false;
+    public float dashInvinsibleMultplier = 0.7f;
+    [SerializeField]private float cooldown;
+    private bool attack;
+    private Animator anim;
 
-    private Rigidbody2D body;
-    private CapsuleCollider2D boxCollider;
-    private bool facingRight = true;
-    private float moveInput;
-
-    private int extraJumps;
-    [SerializeField]private int extraJumpsValue;
-
-    private void Awake()
+    void Awake()
     {
-        animator = GetComponent<Animator>();
-        body = GetComponent<Rigidbody2D>();
-        boxCollider = GetComponent<CapsuleCollider2D>();
-
-        extraJumps = extraJumpsValue;
+        cooldown = dashCooldown;
     }
 
-    private void Update()
+    void Update()
     {
-        Move();
+        horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
         
-        Jump();
-
-        Facing();
-
-        animator.SetBool("isWalk", moveInput != 0);
-    }
-
-    private void Move()
-    {
-
-        moveInput = Input.GetAxis("Horizontal");
-        body.velocity = new Vector2(moveInput * speedWalk, body.velocity.y);
-
-    }
-
-    private void Facing()
-    {
-        if (moveInput > 0.01f)
-            transform.localScale = Vector3.one;
-        else if (moveInput < -0.01f)
-            transform.localScale = new Vector3(-1, 1, 1);
-    }
-
-    private void Jump()
-    {
-        if (isGrounded())
+        if(Input.GetKeyDown(KeyCode.UpArrow)) 
         {
-            extraJumps = extraJumpsValue;
+            jump = true;
         }
 
-        if (Input.GetKeyDown(KeyCode.UpArrow) && extraJumps > 0)
+        if(Input.GetKeyDown(KeyCode.Space) && cooldown <= 0)
         {
-            body.velocity = new Vector2(body.velocity.x, speedJump);
-            extraJumps--;
+            lastDashed = Time.time;
+            dash = true;
+            cooldown = dashCooldown;
+            StartCoroutine(Invinsible());
         }
-        else if (Input.GetKeyDown(KeyCode.UpArrow) && extraJumps == 0 && isGrounded())
+
+         if (Input.GetKeyDown(KeyCode.Z))
         {
-            body.velocity = new Vector2(body.velocity.x, speedJump);
+            attack = true;
+        }
+
+        if(cooldown > 0)
+        {
+            cooldown -= Time.deltaTime;
         }
     }
 
-    private bool isGrounded()
+    void FixedUpdate()
     {
-        RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0, Vector2.down, 0.1f, groundLayer);
-        return raycastHit.collider != null;
+        if(attack && controller.isGrounded())
+        {
+            controller.Move(0f, false, false);
+            fight.Attack();
+            
+        }else
+        {
+            controller.Move(horizontalMove * Time.fixedDeltaTime, jump, dash);
+        }
+        
+        attack = false;
+        jump = false;
+        dash = false;
+        
+    }
+
+    IEnumerator Invinsible()
+    {
+        invinsible = true;
+        //yield on a new YieldInstruction that waits for 5 seconds.
+        yield return new WaitForSeconds(dashCooldown * dashInvinsibleMultplier);
+        invinsible = false;
+    }
+
+    private void PlayerSkills_OnSkillUnlocked(object sender, PlayerSkills.OnSkillUnlockedEventArgs e)
+    {
+        switch(e.skillType)
+        {
+            case PlayerSkills.SkillType.MoveSpeed :
+                runSpeed *= 1.5f;
+                break;
+        }
     }
 
 }
