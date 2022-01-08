@@ -42,10 +42,13 @@ public class Portal : MonoBehaviour
                 GameManager.level++;
                 if(GameManager.level <= GameManager.maxLevel)
                 {
+                    
                     SceneManager.LoadScene (SceneManager.GetActiveScene().name);
-                }else
+                }
+                else
                 {
                     SceneManager.LoadScene (SceneManager.GetActiveScene().buildIndex + 1);
+                    
                 }
                 
             }
