@@ -159,7 +159,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   groundDetect: {fileID: 1070455653150659210}
-  disRay: 2
+  disRay: 4
   patrolDistance: 10
   attackCooldown: 7
   range: 1

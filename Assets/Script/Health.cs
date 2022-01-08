@@ -9,6 +9,8 @@ public class Health : MonoBehaviour
     public float maxHelth = 100;
     public bool dead;
     private float currentHealth;
+    public static float playerHealth = -1;
+    public static float playerMaxHealth = -1;
     private Animator anim;
 
     [Header("iFrames")]
@@ -20,20 +22,40 @@ public class Health : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         spriteRend = GetComponent<SpriteRenderer>();
-
-        
-        currentHealth = maxHelth;
-        
         
         if (this.gameObject.tag == "player")
         {
-            healthBar.SetMaxValue(maxHelth);
+            if(playerMaxHealth == -1)
+            {
+                playerMaxHealth = maxHelth;
+            }else
+            {
+                maxHelth = playerMaxHealth;
+            }
+            healthBar.SetMaxValue(playerMaxHealth);
+            if(playerHealth == -1)
+            {
+                currentHealth = maxHelth;
+                playerHealth = currentHealth;
+            }else
+            {
+                currentHealth = playerHealth;
+                healthBar.SetValue(currentHealth); 
+            }
+        }else
+        {
+            currentHealth = maxHelth;
         }
     }
 
     public void TakeDamage (float _damage)
     {
+        if(GameManager.playerDead)
+        {
+            return;
+        }
         currentHealth -= _damage;
+        playerHealth -= _damage;
         
         if (this.gameObject.tag == "player")
             healthBar.SetValue(currentHealth);
@@ -45,8 +67,15 @@ public class Health : MonoBehaviour
         }else if(!dead)
         {
             if (this.gameObject.tag == "player")
+            {
                 this.GetComponent<PlayerMovement>().enabled = false;
                 this.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+                Curse.currentCurse = -1;
+                Curse.currCurseLv = -1;
+                playerHealth = -1;
+                playerMaxHealth = -1;
+                GameManager.playerDead = true;
+            }
             if (this.gameObject.tag == "enemy")
                 this.GetComponent<EnemyController>().enabled = false;
 
@@ -61,9 +90,6 @@ public class Health : MonoBehaviour
         if (this.gameObject.tag == "player")
             Physics2D.IgnoreLayerCollision(9, 10, true);
 
-        if (this.gameObject.tag == "enemy")
-            Physics2D.IgnoreLayerCollision(10, 9, true);
-
 
         for (int i = 0; i < numberOfFlashes; i++)
         {
@@ -74,8 +100,6 @@ public class Health : MonoBehaviour
         }
         if (this.gameObject.tag == "player")
             Physics2D.IgnoreLayerCollision(9, 10, false);
-        if (this.gameObject.tag == "enemy")
-            Physics2D.IgnoreLayerCollision(10, 9, false);
     }
 
     public void addHealth(float value)

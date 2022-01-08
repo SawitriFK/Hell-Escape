@@ -74,7 +74,7 @@ public class CharacterController2D : MonoBehaviour
 
 	public void Move(float move, bool jump, bool dash)
 	{
-		if(anim.GetCurrentAnimatorStateInfo(0).IsName("PlayerFight"))
+		if(anim.GetCurrentAnimatorStateInfo(0).IsName("PlayerFight") || anim.GetCurrentAnimatorStateInfo(0).IsName("PlayerFight2"))
 		{
 			m_Rigidbody2D.velocity = new Vector2(0, m_Rigidbody2D.velocity.y);
 			return;

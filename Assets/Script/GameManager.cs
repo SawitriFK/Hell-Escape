@@ -7,7 +7,8 @@ public class GameManager : MonoBehaviour
 {
     [Header("Level Design")]
     public static int level = 1;
-    public static int maxLevel = 2;
+    public static int maxLevel = 5;
+    public static bool playerDead = false;
     public GameObject[] levelPrefab;
 
     public GameObject Player;
@@ -53,7 +54,7 @@ public class GameManager : MonoBehaviour
             return;
         }
         
-        if(playerHealth.dead || playerCurse.dead)
+        if(playerDead)
         {
             level = 1;
             StartCoroutine(Delay());
@@ -96,10 +97,12 @@ public class GameManager : MonoBehaviour
         //yield on a new YieldInstruction that waits for 5 seconds.
         yield return new WaitForSeconds(5);
         SceneManager.LoadScene (SceneManager.GetActiveScene().name);
+        playerDead = false;
     }
 
     public void ThisIsPortal(GameObject portal)
     {
         Portal = portal;
     }
+
 }

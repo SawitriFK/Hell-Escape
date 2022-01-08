@@ -9,36 +9,48 @@ public class Curse : MonoBehaviour
 	public Bar curseBar;
     [SerializeField] private Text levelText;
 	[SerializeField] private float[] curseLevel = {100};
-    private float currentCurse;
-    private int currCurseLv;
-    public bool dead = false;
+    public static float currentCurse = -1;
+    public static int currCurseLv = -1;
 
     // Start is called before the first frame update
     void Start()
     {
-        currCurseLv = 0;
+        if(currCurseLv == -1)
+        {
+            currCurseLv = 0;
+        }
         curseBar.SetMaxValue(curseLevel[currCurseLv]);
-        curseBar.SetValue(0);
-        currentCurse = 0;
+        if(currentCurse  == -1)
+        {
+            curseBar.SetValue(0);
+            currentCurse = 0;
+        }else
+        {
+            curseBar.SetValue(currentCurse);
+        }
         levelText.text = "Lv" + currCurseLv;
     }
 
     public void TakeCurseDamage(float curseDamage)
     {
-        if(dead)
+        if(GameManager.playerDead)
         {
             return;
         }
 
         currentCurse += curseDamage;
-        
-        if(currentCurse >= curseLevel[currCurseLv])
+
+        if(currCurseLv != -1 && currentCurse >= curseLevel[currCurseLv])
         {
             currentCurse -= curseLevel[currCurseLv];
             currCurseLv++;
             if(currCurseLv == curseLevel.Length)
             {
-                dead = true;
+                currentCurse = -1;
+                currCurseLv = -1;
+                Health.playerHealth = -1;
+                Health.playerMaxHealth = -1;
+                GameManager.playerDead = true;
                 return;
             }
             curseBar.SetMaxValue(curseLevel[currCurseLv]);

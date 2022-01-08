@@ -95,16 +95,12 @@ public class EnemyController: MonoBehaviour
                 if(!playerHealth.dead)
                 {
                     float dir = target.transform.position.x - transform.position.x;
-                    if( Mathf.Abs(dir) < patrolDistance )
+                    if(facingRight && dir > 0)
                     {
-                        if(!facingRight && dir < 0)
-                        {
-                            return;
-                        }
-                        if(facingRight && dir > 0)
-                        {
-                            return;
-                        }
+                        return;
+                    }else if(!facingRight && dir < 0)
+                    {
+                        return;
                     }
                 }
                 if (facingRight)
