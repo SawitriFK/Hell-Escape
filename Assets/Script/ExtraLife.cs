@@ -23,7 +23,6 @@ public class ExtraLife : MonoBehaviour
 
         if(!activated && raycastHit.collider != null && raycastHit.collider.gameObject.layer == 8)
         {
-            Debug.Log("masuk");
             activated = true;
             rb.velocity = Vector2.zero;
             rb.bodyType = RigidbodyType2D.Kinematic;

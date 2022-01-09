@@ -55,10 +55,14 @@ public class Health : MonoBehaviour
             return;
         }
         currentHealth -= _damage;
-        playerHealth -= _damage;
+        
         
         if (this.gameObject.tag == "player")
+        {
+            playerHealth -= _damage;
             healthBar.SetValue(currentHealth);
+        }
+            
 
         if(currentHealth > 0)
         {
@@ -121,5 +125,14 @@ public class Health : MonoBehaviour
                 healthBar.SetMaxValue(maxHelth);
                 break;
         }
+    }
+
+    public bool halfHP()
+    {
+        if(currentHealth <= maxHelth / 2)
+        {
+            return true;
+        }
+        return false;
     }
 }

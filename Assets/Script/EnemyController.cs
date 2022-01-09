@@ -5,44 +5,44 @@ using UnityEngine;
 public class EnemyController: MonoBehaviour
 {
     [Header("Movement")]
-    [SerializeField] private float speedWalk = 0.0f;
-    [SerializeField] private Animator animator;
-    [SerializeField] private LayerMask groundLayer;
-    [SerializeField] private Transform groundDetect = null;
-    [SerializeField] private int disRay = 0;
-    [SerializeField] private float patrolDistance = 0.0f;
+    [SerializeField] protected float speedWalk = 0.0f;
+    [SerializeField] protected Animator animator;
+    [SerializeField] protected LayerMask groundLayer;
+    [SerializeField] protected Transform groundDetect = null;
+    [SerializeField] protected int disRay = 0;
+    [SerializeField] protected float patrolDistance = 0.0f;
 
     [Header("Attack Parameters")]
-    [SerializeField] private float attackCooldown = 0.0f;
-    [SerializeField] private float range = 0.0f;
-    [SerializeField] private int damage = 0;
-    [SerializeField] private float curseDamage = 0.0f;
+    [SerializeField] protected float attackCooldown = 0.0f;
+    [SerializeField] protected float range = 0.0f;
+    [SerializeField] protected int damage = 0;
+    [SerializeField] protected float curseDamage = 0.0f;
 
     [Header("Collider Parameters")]
-    [SerializeField] private float colliderDistance = 0.0f;
-    [SerializeField] private CapsuleCollider2D capsuleCollider = null;
+    [SerializeField] protected float colliderDistance = 0.0f;
+    [SerializeField] protected CapsuleCollider2D capsuleCollider = null;
 
     [Header("Player Layer")]
     [SerializeField] public LayerMask playerLayer;
-    private float cooldownTimer = Mathf.Infinity;
+    protected float cooldownTimer = Mathf.Infinity;
 
     [Header("Drop Item")]
     public GameObject Coin;
-    [Range(0, 1f)][SerializeField] private float dropChance = 0.0f;
+    [Range(0, 1f)][SerializeField] protected float dropChance = 0.0f;
 
-    private Health playerHealth;
-    private Curse playerCurse;
-    private PlayerMovement playerMovement;
+    protected Health playerHealth;
+    protected Curse playerCurse;
+    protected PlayerMovement playerMovement;
 
-    private Rigidbody2D body;
-    private CapsuleCollider2D boxCollider;
-    private bool facingRight;
-    private GameObject target;
-    private Vector3 wayPointPos;
-    private string attackAnim;
+    protected Rigidbody2D body;
+    protected CapsuleCollider2D boxCollider;
+    protected bool facingRight;
+    protected GameObject target;
+    protected Vector3 wayPointPos;
+    protected string attackAnim;
 
 
-    private void Start()
+    protected virtual void Start()
     {
         float fRand = Random.Range(0.0f,1.0f);
         if(fRand > 0.5f)
@@ -52,11 +52,9 @@ public class EnemyController: MonoBehaviour
         {
             facingRight = false;
             Flip();
-
         }
 
-        speedWalk = Random.Range(speedWalk, speedWalk+1);
-        
+        speedWalk = Random.Range(speedWalk, speedWalk+1);       
         target = GameObject.FindGameObjectsWithTag("player")[0];
         animator = GetComponent<Animator>();
         body = GetComponent<Rigidbody2D>();
@@ -67,101 +65,33 @@ public class EnemyController: MonoBehaviour
         attackAnim = gameObject.name.Replace("(Clone)","").Trim() + "Attack";
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         cooldownTimer += Time.deltaTime;
-
-        //Attack only when player in sight?
-        if (PlayerInRange())
+        if (PlayerInRange() && cooldownTimer >= attackCooldown)
         {
-            animator.SetBool("isMove", false);
-            
-            if (cooldownTimer >= attackCooldown)
-            {
-                animator.SetTrigger("attack");
-                cooldownTimer = 0;
-            }
-
-            body.velocity = new Vector2(0.0f, body.velocity.y);
+            Attack();
+            cooldownTimer = 0;
         }else
         {
-            if(animator.GetCurrentAnimatorStateInfo(0).IsName(attackAnim))
-            {
-                return;
-            }
-
-            if (!isGrounded() || isColli())
-            {
-                if(!playerHealth.dead)
-                {
-                    float dir = target.transform.position.x - transform.position.x;
-                    if(facingRight && dir > 0)
-                    {
-                        return;
-                    }else if(!facingRight && dir < 0)
-                    {
-                        return;
-                    }
-                }
-                if (facingRight)
-                {
-                    facingRight = false;
-                    Flip();
-                }
-                else
-                {
-                    facingRight = true;
-                    Flip();
-                }
-            }else if(!playerHealth.dead && Vector2.Distance(transform.position, target.transform.position) < patrolDistance)
-            {
-                body.velocity = new Vector2(0.0f, body.velocity.y);
-                wayPointPos = new Vector3(target.transform.position.x, transform.position.y, transform.position.z);
-
-                Vector2 posLastFrame = transform.position;
-
-                transform.position = Vector3.MoveTowards(transform.position, wayPointPos, speedWalk * Time.deltaTime);
-
-                Vector2 posThisFrame = transform.position;
-                
-                if(posThisFrame.x > posLastFrame.x && !facingRight)
-                {
-                    facingRight = true;
-                    Flip();
-                }else if(posThisFrame.x < posLastFrame.x && facingRight)
-                {
-                    facingRight = false;
-                    Flip();
-                }
-            }else
-            {
-                if(facingRight)
-                {
-                    body.velocity = new Vector2(speedWalk, body.velocity.y);
-                }else
-                {
-                    body.velocity = new Vector2(-speedWalk, body.velocity.y);
-                }
-                
-            }
-            animator.SetBool("isMove", true);
+            Move();
         }
     }
 
-    private void Flip()
+    protected void Flip()
     {
         Vector2 theScale = transform.localScale;
         theScale.x *= -1;
         transform.localScale = theScale;
     }
 
-    private bool isGrounded()
+    protected bool isGrounded()
     {
         RaycastHit2D raycastHit = Physics2D.Raycast(groundDetect.position, Vector2.down, disRay);
         return raycastHit.collider != null;
     }
 
-    private bool isColli()
+    protected bool isColli()
     {
         RaycastHit2D raycastHit = Physics2D.Raycast(groundDetect.position, Vector2.down, 0);
         if(raycastHit.collider)
@@ -174,17 +104,18 @@ public class EnemyController: MonoBehaviour
         
     }
 
-    private bool PlayerInRange()
+    protected bool PlayerInRange()
     {
         RaycastHit2D hit =
             Physics2D.BoxCast(capsuleCollider.bounds.center + transform.right * range * transform.localScale.x * colliderDistance,
             new Vector3(capsuleCollider.bounds.size.x * range, capsuleCollider.bounds.size.y, capsuleCollider.bounds.size.z),
             0, Vector2.left, 0, playerLayer);
 
+
         return hit.collider != null;
     }
 
-    private void OnDrawGizmos()
+    protected virtual void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireCube(capsuleCollider.bounds.center + transform.right * range * transform.localScale.x * colliderDistance,
@@ -195,7 +126,7 @@ public class EnemyController: MonoBehaviour
         Gizmos.DrawLine(transform.position, transform.position + new Vector3(-patrolDistance, 0f,0f));
     }
 
-    private void DamagePlayer()
+    protected void DamagePlayer()
     {
         if(PlayerInRange() && !playerMovement.invinsible)
         {
@@ -204,7 +135,7 @@ public class EnemyController: MonoBehaviour
         }
     }
 
-    private void DropCoin()
+    protected void DropCoin()
     {
         float rand = Random.Range(0f, 1f);
   
@@ -212,5 +143,94 @@ public class EnemyController: MonoBehaviour
         {
             var dropItem = Instantiate(Coin, transform.position, transform.rotation);
         }
+    }
+
+    protected void Move()
+    {
+        if(checkAttackAnimRunning())
+        {
+            return;
+        }
+
+        if (!isGrounded() || isColli())
+        {
+            if(!playerHealth.dead)
+            {
+                float dir = target.transform.position.x - transform.position.x;
+                if (facingRight)
+                {
+                    if(dir > 0 && Mathf.Abs(dir) < patrolDistance)
+                    {
+                        return;
+                    }
+                    facingRight = false;
+                    Flip();
+                }
+                else
+                {
+                    if(dir < 0 && Mathf.Abs(dir) < patrolDistance)
+                    {
+                        return;
+                    }
+                    facingRight = true;
+                    Flip();
+                }
+            }else
+            {
+                if (facingRight)
+                {
+                    facingRight = false;
+                    Flip();
+                }
+                else
+                {
+                    facingRight = true;
+                    Flip();
+                }
+            }
+        }else if(!playerHealth.dead && Vector2.Distance(transform.position, target.transform.position) < patrolDistance)
+        {
+            body.velocity = new Vector2(0.0f, body.velocity.y);
+            wayPointPos = new Vector3(target.transform.position.x, transform.position.y, transform.position.z);
+
+            Vector2 posLastFrame = transform.position;
+
+            transform.position = Vector3.MoveTowards(transform.position, wayPointPos, speedWalk * Time.deltaTime);
+
+            Vector2 posThisFrame = transform.position;
+            
+            if(posThisFrame.x > posLastFrame.x && !facingRight)
+            {
+                facingRight = true;
+                Flip();
+            }else if(posThisFrame.x < posLastFrame.x && facingRight)
+            {
+                facingRight = false;
+                Flip();
+            }
+        }else
+        {
+            if(facingRight)
+            {
+                body.velocity = new Vector2(speedWalk, body.velocity.y);
+            }else
+            {
+                body.velocity = new Vector2(-speedWalk, body.velocity.y);
+            }
+            
+        }
+        animator.SetBool("isMove", true);
+    }
+
+    protected virtual void Attack()
+    {
+        animator.SetBool("isMove", false);
+        animator.SetTrigger("attack");
+        body.velocity = new Vector2(0.0f, body.velocity.y);
+    }
+
+    protected virtual bool checkAttackAnimRunning()
+    {
+        return animator.GetCurrentAnimatorStateInfo(0).IsName(attackAnim);
     }
 }
