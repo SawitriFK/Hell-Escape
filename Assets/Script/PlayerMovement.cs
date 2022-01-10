@@ -29,12 +29,12 @@ public class PlayerMovement : MonoBehaviour
     {
         horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
         
-        if(Input.GetKeyDown(KeyCode.UpArrow)) 
+        if(Input.GetButtonDown("Jump")) 
         {
             jump = true;
         }
 
-        if(Input.GetKeyDown(KeyCode.Space) && cooldown <= 0)
+        if(Input.GetButtonDown("Fire2") && cooldown <= 0)
         {
             lastDashed = Time.time;
             dash = true;
@@ -42,7 +42,7 @@ public class PlayerMovement : MonoBehaviour
             StartCoroutine(Invinsible());
         }
 
-         if (Input.GetKeyDown(KeyCode.Z))
+         if (Input.GetButtonDown("Fire1"))
         {
             attack = true;
         }

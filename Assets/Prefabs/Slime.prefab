@@ -162,7 +162,7 @@ MonoBehaviour:
   disRay: 1
   patrolDistance: 10
   attackCooldown: 3
-  range: 1
+  range: 0.56
   damage: 10
   curseDamage: 5
   colliderDistance: 1.19

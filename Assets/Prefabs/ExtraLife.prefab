@@ -132,7 +132,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0372e34466439f544ba22c6bcefd7b9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxValue: 10
+  maxValue: 100
   groundDetect: {fileID: 6099008567770177505}
 --- !u!1 &5576158800613448818
 GameObject:

@@ -104,7 +104,7 @@ public class EnemyController: MonoBehaviour
         
     }
 
-    protected bool PlayerInRange()
+    protected virtual bool PlayerInRange()
     {
         RaycastHit2D hit =
             Physics2D.BoxCast(capsuleCollider.bounds.center + transform.right * range * transform.localScale.x * colliderDistance,
@@ -147,14 +147,14 @@ public class EnemyController: MonoBehaviour
 
     protected void Move()
     {
-        if(checkAttackAnimRunning())
+        if(checkAttackAnimRunning() || PlayerInRange())
         {
             return;
         }
 
         if (!isGrounded() || isColli())
         {
-            if(!playerHealth.dead)
+            if(!GameManager.playerDead)
             {
                 float dir = target.transform.position.x - transform.position.x;
                 if (facingRight)
@@ -188,7 +188,7 @@ public class EnemyController: MonoBehaviour
                     Flip();
                 }
             }
-        }else if(!playerHealth.dead && Vector2.Distance(transform.position, target.transform.position) < patrolDistance)
+        }else if(!GameManager.playerDead && Vector2.Distance(transform.position, target.transform.position) < patrolDistance)
         {
             body.velocity = new Vector2(0.0f, body.velocity.y);
             wayPointPos = new Vector3(target.transform.position.x, transform.position.y, transform.position.z);

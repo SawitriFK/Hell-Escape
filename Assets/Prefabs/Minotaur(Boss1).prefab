@@ -175,7 +175,7 @@ MonoBehaviour:
   groundDetect: {fileID: 7301096994720801209}
   disRay: 4
   patrolDistance: 15
-  attackCooldown: 0.6
+  attackCooldown: 1
   range: 0.5
   damage: 50
   curseDamage: 40
@@ -186,13 +186,25 @@ MonoBehaviour:
     m_Bits: 512
   Coin: {fileID: 4628717098923819256, guid: 1108b3ad5b4826d44bb9b10ff9942706, type: 3}
   dropChance: 1
-  speedWalk2: 3
-  attackCooldown2: 1
-  range2: 2.06
-  damage2: 100
-  curseDamage2: 70
-  colliderDistance2: 1.07
-  phase2: 0
+  speedWalkPhase2: 3.5
+  attackCooldownPhase2: 0.6
+  damageJab: 30
+  rangeJab: 0.42
+  curseDamageJab: 10
+  colliderDistanceJab: 2.02
+  damageAxe: 50
+  rangeAxe: 0.54
+  curseDamageAxe: 40
+  colliderDistanceAxe: 1.43
+  damageCrush: 150
+  rangeCrush: 0.93
+  curseDamageCrush: 100
+  colliderDistanceCrush: 2.99
+  damageThrow: 100
+  rangeThrow: 2.1
+  curseDamageThrow: 50
+  colliderDistanceThrow: 1.02
+  visualizeAttack: 3
 --- !u!70 &6799104238131182158
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -206,7 +218,7 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.28, y: -0.035395622}
+  m_Offset: {x: 0.05, y: -0.035395622}
   m_Size: {x: 1.4067218, y: 1.778027}
   m_Direction: 0
 --- !u!114 &5930298827845905404
@@ -222,7 +234,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 0}
-  maxHelth: 140
+  maxHelth: 1000
+  boss: 1
   dead: 0
   iFrameDuration: 0.4
   numberOfFlashes: 3

@@ -11,10 +11,12 @@ public class Curse : MonoBehaviour
 	[SerializeField] private float[] curseLevel = {100};
     public static float currentCurse = -1;
     public static int currCurseLv = -1;
+    private Animator anim;
 
     // Start is called before the first frame update
     void Start()
     {
+        anim = GetComponent<Animator>();
         if(currCurseLv == -1)
         {
             currCurseLv = 0;
@@ -46,11 +48,16 @@ public class Curse : MonoBehaviour
             currCurseLv++;
             if(currCurseLv == curseLevel.Length)
             {
+                this.GetComponent<PlayerMovement>().enabled = false;
+                this.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+                curseBar.SetMaxValue(curseLevel[currCurseLv-1]);
+                levelText.text = "Lv" + currCurseLv;
                 currentCurse = -1;
                 currCurseLv = -1;
                 Health.playerHealth = -1;
                 Health.playerMaxHealth = -1;
                 GameManager.playerDead = true;
+                anim.SetTrigger("die");       
                 return;
             }
             curseBar.SetMaxValue(curseLevel[currCurseLv]);

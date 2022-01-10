@@ -7,10 +7,10 @@ public class GameManager : MonoBehaviour
 {
     [Header("Level Design")]
     public static int level = 1;
-    public static int maxLevel = 3;
+    public static int maxLevel = 10;
     public static bool playerDead = false;
     public GameObject[] levelPrefab;
-    // public GameObject BossBar;
+    public GameObject BossBar;
 
     public GameObject Player;
     private GameObject Portal;
@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour
     {
         if(level == maxLevel)
         {
-            // BossBar.SetActive(true);
+            BossBar.SetActive(true);
             int rand = levelPrefab.Length-1;
             Instantiate(levelPrefab[rand], levelPrefab[rand].transform.position, levelPrefab[rand].transform.rotation);
         }else

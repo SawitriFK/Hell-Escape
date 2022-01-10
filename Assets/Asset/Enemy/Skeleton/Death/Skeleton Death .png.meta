@@ -1,18 +1,17 @@
 fileFormatVersion: 2
-guid: d4ffdf272848b314e81026a04b8f29d4
+guid: e9921b1dc620dc145b86ec75d91254cd
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Minotaur Rock Crush Right_0
-    21300002: Minotaur Rock Crush Right_1
-    21300004: Minotaur Rock Crush Right_2
-    21300006: Minotaur Rock Crush Right_3
-    21300008: Minotaur Rock Crush Right_4
-    21300010: Minotaur Rock Crush Right_5
-    21300012: Minotaur Rock Crush Right_6
-    21300014: Minotaur Rock Crush Right_7
-    21300016: Minotaur Rock Crush Right_8
-    21300018: Minotaur Rock Crush Right_9
-    21300020: Minotaur Rock Crush Right_10
+    21300000: Skeleton Death _0
+    21300002: Skeleton Death _1
+    21300004: Skeleton Death _2
+    21300006: Skeleton Death _3
+    21300008: Skeleton Death _4
+    21300010: Skeleton Death _5
+    21300012: Skeleton Death _6
+    21300014: Skeleton Death _7
+    21300016: Skeleton Death _8
+    21300018: Skeleton Death _9
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -106,7 +105,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Minotaur Rock Crush Right_2
+      name: Skeleton Death _0
       rect:
         serializedVersion: 2
         x: 0
@@ -114,19 +113,79 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a5d9b93290e07584ba8414d7130549f5
+      spriteID: a937ded8b25890f4d923beca184a4825
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Minotaur Rock Crush Right_3
+      name: Skeleton Death _1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c5b560f0cc5c874db9592eb1db14d59
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skeleton Death _2
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: daa34806f4fcb82449431050579a719d
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skeleton Death _3
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4297a1ef999d9f547b0b23e36220a8e4
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skeleton Death _4
       rect:
         serializedVersion: 2
         x: 128
@@ -134,73 +193,113 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4638239c9321cf649b6d330028c87da7
+      spriteID: 94c1a31f84d523e44885d10b7630f775
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Minotaur Rock Crush Right_4
+      name: Skeleton Death _5
       rect:
         serializedVersion: 2
-        x: 256
-        y: 0
-        width: 96
-        height: 64
-      alignment: 9
-      pivot: {x: 0.16666667, y: 0.25}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4fcacfa59dc4ad84a9e3f59c8d99e945
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Minotaur Rock Crush Right_7
-      rect:
-        serializedVersion: 2
-        x: 384
-        y: 0
-        width: 96
-        height: 32
-      alignment: 9
-      pivot: {x: 0.16666667, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: dc8a1bc4917db2a498b23a57acddc507
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Minotaur Rock Crush Right_10
-      rect:
-        serializedVersion: 2
-        x: 512
+        x: 192
         y: 0
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4cf3dc8cf12052f45b0d5dd03aa427e7
+      spriteID: 48bd87ab558abe349b3ba7952cdbfbe7
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skeleton Death _6
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39ce4817dc472734f8d31c0fec1d72b1
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skeleton Death _7
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5457fa28ef0f78a40a8c640346fbe33c
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skeleton Death _8
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 991e9a1f45a11c445b7e88d29a05df8c
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skeleton Death _9
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20af0a6ff44c8f64cbdcdd01a1064502
       vertices: []
       indices: 
       edges: []
@@ -208,7 +307,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 4703a3aa4c5ebe64e8028d04f0c6a7c8
+    spriteID: ce190e20b0aec9f4ca2589454a4c4ca1
     vertices: []
     indices: 
     edges: []

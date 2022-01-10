@@ -31,7 +31,6 @@ public class CharacterController2D : MonoBehaviour
 	private Rigidbody2D m_Rigidbody2D;
 	private bool m_FacingRight = true;  // For determining which way the player is currently facing.
 	private Vector3 m_Velocity = Vector3.zero;
-	private bool canDoubleJump;
 
 	[Header("Events")]
 	[Space]
@@ -64,7 +63,7 @@ public class CharacterController2D : MonoBehaviour
 			if (colliders[i].gameObject != gameObject)
 			{
 				m_Grounded = true;
-				canDoubleJump = true;
+				anim.SetTrigger("grounded");
 				
 				if (!wasGrounded)
 					OnLandEvent.Invoke();
@@ -87,7 +86,7 @@ public class CharacterController2D : MonoBehaviour
 				m_Rigidbody2D.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
 			}else
 			{
-				if(Input.GetKey(KeyCode.UpArrow))
+				if(Input.GetButton("Jump"))
 				{
 					m_Rigidbody2D.velocity += Vector2.up * Physics2D.gravity.y * (floatMultiplier - 1) * Time.deltaTime;
 				}
@@ -125,23 +124,13 @@ public class CharacterController2D : MonoBehaviour
 			}
 		}
 		// If the player should jump...
-		if (jump)
+		if (jump && m_Grounded)
 		{
-			if(m_Grounded)
-			{
-				// Add a vertical force to the player.
-				m_Grounded = false;
-				m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
-				anim.SetTrigger("jump");
-			}else if(canDoubleJump)
-			{
-				// Add a vertical force to the player.
-				m_Grounded = false;
-				m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce / 1.5f));
-				anim.SetTrigger("jump");
-				canDoubleJump = false;
-			}
-		}
+			// Add a vertical force to the player.
+			m_Grounded = false;
+			m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
+			anim.SetTrigger("jump");
+	}
 
 		// If the player dash
 		if(dash)

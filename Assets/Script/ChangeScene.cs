@@ -2,19 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class ChangeScene : MonoBehaviour
 {
-    [SerializeField] private Button button = null;
 
-    [SerializeField] private string nextScene = "Main Menu";
-
-    void Start()
+    public void StartGame()
     {
-        button.onClick.AddListener(() =>
-        {
-            SceneManager.LoadScene(nextScene);
-        });
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 }

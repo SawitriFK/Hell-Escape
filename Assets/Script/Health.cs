@@ -7,6 +7,7 @@ public class Health : MonoBehaviour
     [Header ("Health")]
     public Bar healthBar;
     public float maxHelth = 100;
+    [SerializeField]private bool boss = false;
     public bool dead;
     private float currentHealth;
     public static float playerHealth = -1;
@@ -44,6 +45,11 @@ public class Health : MonoBehaviour
             }
         }else
         {
+            if(boss)
+            {
+                healthBar = GameObject.Find("BossBar").GetComponent<Bar>();
+                healthBar.SetMaxValue(maxHelth);
+            }
             currentHealth = maxHelth;
         }
     }
@@ -60,6 +66,11 @@ public class Health : MonoBehaviour
         if (this.gameObject.tag == "player")
         {
             playerHealth -= _damage;
+            healthBar.SetValue(currentHealth);
+        }
+
+        if(boss)
+        {
             healthBar.SetValue(currentHealth);
         }
             
