@@ -14,12 +14,12 @@ public class EnemyController: MonoBehaviour
 
     [Header("Attack Parameters")]
     [SerializeField] protected float attackCooldown = 0.0f;
-    [SerializeField] protected float range = 0.0f;
+    [SerializeField] private float range = 0.0f;
     [SerializeField] protected int damage = 0;
     [SerializeField] protected float curseDamage = 0.0f;
 
     [Header("Collider Parameters")]
-    [SerializeField] protected float colliderDistance = 0.0f;
+    [SerializeField] private float colliderDistance = 0.0f;
     [SerializeField] protected CapsuleCollider2D capsuleCollider = null;
 
     [Header("Player Layer")]
@@ -139,7 +139,7 @@ public class EnemyController: MonoBehaviour
     {
         float rand = Random.Range(0f, 1f);
   
-        if(rand < dropChance)
+        if(rand <= dropChance)
         {
             var dropItem = Instantiate(Coin, transform.position, transform.rotation);
         }

@@ -2,19 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossController : EnemyController
+public class MinotaurBossController : EnemyController
 {
-    // [Header("Movement Phase 2")]
-    // [SerializeField] protected float speedWalk2 = 0.0f;
-
-    // [Header("Attack Parameters Phase 2")]
-    // [SerializeField] protected float attackCooldown2 = 0.0f;
-    // [SerializeField] protected float range2 = 0.0f;
-    // [SerializeField] protected int damage2 = 0;
-    // [SerializeField] protected float curseDamage2 = 0.0f;
-
-    // [Header("Collider Parameters Phase 2")]
-    // [SerializeField] protected float colliderDistance2 = 0.0f;
     public enum AttackVariant {Jab, Axe, Crush, Throw};
 
     [Header("Boss Parameter")]
@@ -105,15 +94,23 @@ public class BossController : EnemyController
         {
             case AttackVariant.Jab :
                 animator.SetTrigger("attack1");
+                damage = damageJab;
+                curseDamage = curseDamageJab;
                 break;
             case AttackVariant.Crush :
                 animator.SetTrigger("attack1");
+                damage = damageCrush;
+                curseDamage = curseDamageCrush;
                 break;
             case AttackVariant.Axe :
                 animator.SetTrigger("attack2");
+                damage = damageAxe;
+                curseDamage = curseDamageAxe;
                 break;
             case AttackVariant.Throw :
                 animator.SetTrigger("attack2");
+                damage = damageThrow;
+                curseDamage = curseDamageThrow;
                 break; 
         }
     }

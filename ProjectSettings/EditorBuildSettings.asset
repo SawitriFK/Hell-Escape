@@ -5,13 +5,19 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/Main Menu.unity
     guid: 757d3ce2bee6842428e8034ef8edde4f
   - enabled: 1
     path: Assets/Scenes/Level Volcano.unity
     guid: b62361df32b822b4ebdb9dd7d632e09f
+  - enabled: 1
+    path: Assets/Scenes/Level Cave.unity
+    guid: 5ffdabecfd47e9347a0fb601c49840ac
+  - enabled: 1
+    path: Assets/Scenes/Ending.unity
+    guid: 347282693e25bd04bb34e529bd0cd82f
+  - enabled: 1
+    path: Assets/Scenes/Credits.unity
+    guid: cfbde1b33a320b448af389e6b2dc2761
   m_configObjects: {}

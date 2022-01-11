@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
 {
     [Header("Level Design")]
     public static int level = 1;
-    public static int maxLevel = 10;
+    public static int maxLevel = 6;
     public static bool playerDead = false;
     public GameObject[] levelPrefab;
     public GameObject BossBar;

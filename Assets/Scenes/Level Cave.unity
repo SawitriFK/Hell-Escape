@@ -2807,11 +2807,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelPrefab:
-  - {fileID: 7565267523835468035, guid: faa614bcec5140a4aaf5f63e208880c8, type: 3}
-  - {fileID: 3505806501374588681, guid: 89b5823d78ef52a4a85aae67d082bf69, type: 3}
-  - {fileID: 6913487048082948065, guid: d6ec277ffb108dc44b4e1c6468b3f0fe, type: 3}
-  - {fileID: 3161434517167438833, guid: ad7b91667cb03d340bf3077100d5e79e, type: 3}
-  - {fileID: 7030996010487810199, guid: 53e22d9785d02664eaad3e425fc2c1db, type: 3}
+  - {fileID: 3865139326512327448, guid: a7778b1249479384d8c194874e212603, type: 3}
+  - {fileID: 1179496509778381482, guid: 6cc624d279765a84bb58ba43496927f9, type: 3}
+  - {fileID: 8872044412778125882, guid: 319bff4f11194244fa0e9f7aeef93bd0, type: 3}
+  - {fileID: 2835677445198170504, guid: ab16d0eaab97bee4a8684654c4440399, type: 3}
+  - {fileID: 5357108922122313957, guid: 82ce5e65ad1b5b441a9f992f0276ad65, type: 3}
   BossBar: {fileID: 532182687}
   Player: {fileID: 1415350493}
   minHeightForDeath: -9
@@ -3167,7 +3167,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.41960788, g: 0.3019608, b: 0.25882354, a: 1}
+  m_Color: {r: 0.019607844, g: 0.75294125, b: 0.20000002, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:

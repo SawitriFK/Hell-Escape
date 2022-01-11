@@ -39,14 +39,14 @@ public class Portal : MonoBehaviour
         {
             if(Input.GetKeyDown(KeyCode.E))
             {
-                GameManager.level++;
-                if(GameManager.level <= GameManager.maxLevel)
+                if(GameManager.level < GameManager.maxLevel)
                 {
-                    
+                    GameManager.level++;
                     SceneManager.LoadScene (SceneManager.GetActiveScene().name);
                 }
                 else
                 {
+                    GameManager.level = 1;
                     SceneManager.LoadScene (SceneManager.GetActiveScene().buildIndex + 1);
                     
                 }
