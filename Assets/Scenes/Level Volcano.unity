@@ -5083,8 +5083,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 1937009771}
-  gameOverMenu: {fileID: 0}
-  deadText: {fileID: 0}
+  gameOverMenu: {fileID: 1257871215}
+  deadText: {fileID: 865990219}
 --- !u!95 &1513162608
 Animator:
   serializedVersion: 3
