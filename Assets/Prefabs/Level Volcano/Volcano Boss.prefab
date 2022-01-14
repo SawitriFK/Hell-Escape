@@ -637,7 +637,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   portal: {fileID: 3988278321725550292}
-  box: {fileID: 0}
+  box: {fileID: 6413870535481280787}
 --- !u!1 &9094163144021122350
 GameObject:
   m_ObjectHideFlags: 0
