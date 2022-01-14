@@ -155,9 +155,11 @@ public class Health : MonoBehaviour
     public void addHealth(float value)
     {
         currentHealth += value;
-        if(currentHealth > maxHelth)
+        playerHealth += value;
+        if (currentHealth > maxHelth)
         {
             currentHealth = maxHelth;
+            playerHealth = maxHelth;
         }
         healthBar.SetValue(currentHealth);
     }
