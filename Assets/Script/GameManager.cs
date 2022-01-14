@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
 
     public GameObject Player;
     private GameObject Portal;
+    private GameObject Box;
     private Health playerHealth;
     private Curse playerCurse;
 
@@ -65,6 +66,7 @@ public class GameManager : MonoBehaviour
         if(GameObject.FindGameObjectsWithTag("enemy").Length == 0 && allSpawned)
         {
             Portal.SetActive(true);
+            Box.SetActive(true);
         }
 
         if(Player.transform.position.y < minHeightForDeath)
@@ -106,5 +108,11 @@ public class GameManager : MonoBehaviour
     {
         Portal = portal;
     }
+
+    public void ThisIsBox(GameObject box)
+    {
+        Box = box;
+    }
+
 
 }

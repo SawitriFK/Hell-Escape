@@ -63,6 +63,10 @@ public class Curse : MonoBehaviour
             curseBar.SetMaxValue(curseLevel[currCurseLv]);
             levelText.text = "Lv" + currCurseLv;
         }
+        if(currentCurse <= -1)
+        {
+            currentCurse = -1;
+        }
 
         curseBar.SetValue(currentCurse);
     }

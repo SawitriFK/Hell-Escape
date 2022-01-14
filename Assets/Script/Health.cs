@@ -9,7 +9,7 @@ public class Health : MonoBehaviour
     public float maxHelth = 100;
     [SerializeField]private bool boss = false;
     public bool dead;
-    private float currentHealth;
+    [SerializeField] private float currentHealth;
     public static float playerHealth = -1;
     public static float playerMaxHealth = -1;
     private Animator anim;

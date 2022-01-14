@@ -7,8 +7,8 @@ public class PlayerBattle : MonoBehaviour
     [Header("Attack Parameters")]
     [SerializeField] private float range = 0.0f;
     [SerializeField] private float range2 = 0.0f;
-    [SerializeField] private int damage = 0;
-    [SerializeField] private int damage2 = 0;
+    public int damage = 0;
+    public int damage2 = 0;
     [SerializeField] public LayerMask enemyLayer;
 
     [Header("Collider Parameters")]
