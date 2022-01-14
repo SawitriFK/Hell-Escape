@@ -40,7 +40,7 @@ public class OptionSkill : MonoBehaviour
     //public KindSkill kindSkill;
 
     //Skill Pilihan
-    public static string[] skillPlayer = new string[3];
+    public string[] skillPlayer = new string[3];
 
     // UI Skill Player
     public Image[] skillUIPlayer = new Image[3];
@@ -82,17 +82,6 @@ public class OptionSkill : MonoBehaviour
     }
     void generateSkill()
     {
-        /*        allSkill.Shuffle(allSkill.Length);
-
-
-                for (int y = 0; y < tempSkill.Length; y++)
-                {
-                    tempSkill[y] = allSkill[y].Name;
-
-                    allSkillUI[y].Name.text = allSkill[findSkill(tempSkill[y])].Name;
-                    allSkillUI[y].Description.text = allSkill[findSkill(tempSkill[y])].Description;
-                    allSkillUI[y].Icon.sprite = allSkill[findSkill(tempSkill[y])].Icon;
-                }*/
 
         allSkill.Shuffle(allSkill.Length);
 
@@ -112,21 +101,7 @@ public class OptionSkill : MonoBehaviour
             }
         }
 
-/*        int y = 0;
-        while (y < allSkill.Length)
-        {
-            allSkill.Shuffle(allSkill.Length);
-            if (checkPlayerSkill(y) == false)
-            {
-                tempSkill[y] = allSkill[y].Name;
-
-                allSkillUI[y].Name.text = allSkill[findSkill(tempSkill[y])].Name;
-                allSkillUI[y].Description.text = allSkill[findSkill(tempSkill[y])].Description;
-                allSkillUI[y].Icon.sprite = allSkill[findSkill(tempSkill[y])].Icon;
-                y++;
-            }
-
-        }*/
+        
 
 
     }
@@ -195,7 +170,7 @@ public class OptionSkill : MonoBehaviour
     public void playerSkillUI()
     {
         int lengthSP = checkArrayLength(skillPlayer);
-        //Debug.Log(lengthSP);
+        Debug.Log(lengthSP);
         if (lengthSP > 0)
         {
             for (int i = 0; i < lengthSP; i++)
@@ -272,41 +247,6 @@ public class OptionSkill : MonoBehaviour
     }
 
 
-    /*    public void selectSkill(int index)
-        {
-
-            int i = 0;
-
-            bool con = false;
-
-            while (i < skillPlayer.Length)
-            {
-                for (int j = 0; j < skillPlayer.Length; j++)
-                {
-
-                    if (skillPlayer[j] == tempSkill[index])
-                    {
-                        con = true;
-                        break;
-                    }
-
-                }
-                Debug.Log(con);
-                if (con == false && skillPlayer[i] == -1)
-                {
-                    skillPlayer[i] = tempSkill[index];
-                    skillUIPlayer[i].text = allSkill[skillPlayer[i]].Name;
-                    generateSkill();
-                    menuSkill.SetActive(false);
-                    Time.timeScale = 1;
-                    break;
-
-                }
-                i++;
-                con = false;
-            }
-
-        }*/
 
     // Skill
     public void healtMax()

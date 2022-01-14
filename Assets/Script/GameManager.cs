@@ -111,7 +111,7 @@ public class GameManager : MonoBehaviour
     {
         Portal = portal;
     }
-<<<<<<< HEAD
+
 
     public void ThisIsBox(GameObject box)
     {
@@ -119,6 +119,5 @@ public class GameManager : MonoBehaviour
     }
 
 
-=======
->>>>>>> 90aa404dc07faa969abd491c783e7f96901bdca2
+
 }
