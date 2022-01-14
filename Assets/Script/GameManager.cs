@@ -5,10 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public enum CauseOfDeath {Health, Curse};
     [Header("Level Design")]
     public static int level = 1;
     public static int maxLevel = 6;
     public static bool playerDead = false;
+    public static CauseOfDeath whyDead;
     public GameObject[] levelPrefab;
     public GameObject BossBar;
 
@@ -38,7 +40,8 @@ public class GameManager : MonoBehaviour
         {
             int rand = Random.Range(0,levelPrefab.Length-1);
             Instantiate(levelPrefab[rand], levelPrefab[rand].transform.position, levelPrefab[rand].transform.rotation);
-        }   
+        }
+        GameObject.Find("UICanvas").GetComponent<Animator>().SetTrigger("fadein");
     }
     
     // Start is called before the first frame update
@@ -70,6 +73,7 @@ public class GameManager : MonoBehaviour
         if(Player.transform.position.y < minHeightForDeath)
         {
             Player.transform.position = SpawnPoint.position;
+            FindObjectOfType<AudioManager>().Play("PlayerFall");
             playerHealth.TakeDamage(fallDamage);
         }   
     }
@@ -97,14 +101,12 @@ public class GameManager : MonoBehaviour
     IEnumerator Delay()
     {
         //yield on a new YieldInstruction that waits for 5 seconds.
-        yield return new WaitForSeconds(5);
-        SceneManager.LoadScene (SceneManager.GetActiveScene().name);
-        playerDead = false;
+        yield return new WaitForSeconds(3);
+        GameObject.Find("UICanvas").GetComponent<Animator>().SetTrigger("fadeout");
     }
 
     public void ThisIsPortal(GameObject portal)
     {
         Portal = portal;
     }
-
 }

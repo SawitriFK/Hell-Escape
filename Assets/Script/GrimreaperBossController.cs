@@ -80,6 +80,7 @@ public class GrimreaperBossController : EnemyController
         attacking = true;
         body.velocity = new Vector2(0.0f, body.velocity.y);
         animator.SetBool("isMove", false);
+        FindObjectOfType<AudioManager>().Play("GrimreaperAttack");
         switch(attackNow)
         {
             case AttackVariant.Attack :

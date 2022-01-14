@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Health : MonoBehaviour
 {
@@ -67,6 +68,22 @@ public class Health : MonoBehaviour
         {
             playerHealth -= _damage;
             healthBar.SetValue(currentHealth);
+            FindObjectOfType<AudioManager>().Play("PlayerDamaged");
+        }else if (this.gameObject.tag == "enemy")
+        {
+            if(boss)
+            {
+                if(SceneManager.GetActiveScene().buildIndex == 1)
+                {
+                    FindObjectOfType<AudioManager>().Play("MinotaurDamaged");
+                }else
+                {
+                    FindObjectOfType<AudioManager>().Play("GrimreaperDamaged");
+                }
+            }else
+            {
+                FindObjectOfType<AudioManager>().Play("EnemyDamaged");
+            }
         }
 
         if(boss)
@@ -90,9 +107,27 @@ public class Health : MonoBehaviour
                 playerHealth = -1;
                 playerMaxHealth = -1;
                 GameManager.playerDead = true;
+                FindObjectOfType<AudioManager>().Play("PlayerDie");
+                GameManager.whyDead = GameManager.CauseOfDeath.Health;
             }
             if (this.gameObject.tag == "enemy")
+            {
                 this.GetComponent<EnemyController>().enabled = false;
+                if(boss)
+                {
+                    if(SceneManager.GetActiveScene().buildIndex == 1)
+                    {
+                        FindObjectOfType<AudioManager>().Play("MinotaurDie");
+                    }else
+                    {
+                        FindObjectOfType<AudioManager>().Play("GrimreaperDie");
+                    }
+                }else
+                {
+                    FindObjectOfType<AudioManager>().Play("EnemyDie");
+                }
+            }
+                
 
             anim.SetTrigger("die");       
 

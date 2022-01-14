@@ -1,0 +1,126 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8719295850095663474
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8719295850095663477}
+  - component: {fileID: 8719295850095663476}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8719295850095663477
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8719295850095663474}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8719295850095663476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8719295850095663474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed0415442ddd0064891f6c8a490f797d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: OpeningTheme
+    clip: {fileID: 0}
+    loop: 1
+    source: {fileID: 0}
+  - name: BattleTheme
+    clip: {fileID: 8300000, guid: a9f1457a7fe9df34f88a97218205b11e, type: 3}
+    loop: 1
+    source: {fileID: 0}
+  - name: EndingTheme
+    clip: {fileID: 0}
+    loop: 1
+    source: {fileID: 0}
+  - name: GameOverTheme
+    clip: {fileID: 0}
+    loop: 1
+    source: {fileID: 0}
+  - name: PlayerAttack1
+    clip: {fileID: 0}
+    loop: 0
+    source: {fileID: 0}
+  - name: PlayerAttack2
+    clip: {fileID: 0}
+    loop: 0
+    source: {fileID: 0}
+  - name: PlayerLompat
+    clip: {fileID: 0}
+    loop: 0
+    source: {fileID: 0}
+  - name: PlayerDamaged
+    clip: {fileID: 0}
+    loop: 0
+    source: {fileID: 0}
+  - name: PlayerFall
+    clip: {fileID: 0}
+    loop: 0
+    source: {fileID: 0}
+  - name: PlayerFireball
+    clip: {fileID: 0}
+    loop: 0
+    source: {fileID: 0}
+  - name: PlayerDie
+    clip: {fileID: 0}
+    loop: 0
+    source: {fileID: 0}
+  - name: EnemyAttack
+    clip: {fileID: 0}
+    loop: 0
+    source: {fileID: 0}
+  - name: EnemyDamaged
+    clip: {fileID: 0}
+    loop: 0
+    source: {fileID: 0}
+  - name: EnemyDie
+    clip: {fileID: 0}
+    loop: 0
+    source: {fileID: 0}
+  - name: MinotaurAttack
+    clip: {fileID: 0}
+    loop: 0
+    source: {fileID: 0}
+  - name: MinotaurDamaged
+    clip: {fileID: 0}
+    loop: 0
+    source: {fileID: 0}
+  - name: MinotaurDie
+    clip: {fileID: 0}
+    loop: 0
+    source: {fileID: 0}
+  - name: GrimreaperAttack
+    clip: {fileID: 0}
+    loop: 0
+    source: {fileID: 0}
+  - name: GrimreaperDamaged
+    clip: {fileID: 0}
+    loop: 0
+    source: {fileID: 0}
+  - name: GrimreaperDie
+    clip: {fileID: 0}
+    loop: 0
+    source: {fileID: 0}

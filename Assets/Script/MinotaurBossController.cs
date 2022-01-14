@@ -90,6 +90,7 @@ public class MinotaurBossController : EnemyController
         attacking = true;
         body.velocity = new Vector2(0.0f, body.velocity.y);
         animator.SetBool("isMove", false);
+        FindObjectOfType<AudioManager>().Play("MinotaurAttack");
         switch(attackNow)
         {
             case AttackVariant.Jab :
