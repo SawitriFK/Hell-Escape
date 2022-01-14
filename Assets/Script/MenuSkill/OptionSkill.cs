@@ -40,6 +40,7 @@ public class OptionSkill : MonoBehaviour
     //public KindSkill kindSkill;
 
     //Skill Pilihan
+    [SerializeField]
     public string[] skillPlayer = new string[3];
 
     // UI Skill Player
@@ -252,7 +253,7 @@ public class OptionSkill : MonoBehaviour
     public void healtMax()
     {
         
-        healthForMax.addHealth(500);
+        healthForMax.GetComponent<Health>().addHealth(500);
     }
     public void curseMin()
     {
