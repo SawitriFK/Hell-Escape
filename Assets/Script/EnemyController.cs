@@ -225,6 +225,7 @@ public class EnemyController: MonoBehaviour
     protected virtual void Attack()
     {
         animator.SetBool("isMove", false);
+        FindObjectOfType<AudioManager>().Play("EnemyAttack");
         animator.SetTrigger("attack");
         body.velocity = new Vector2(0.0f, body.velocity.y);
     }

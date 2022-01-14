@@ -34,6 +34,7 @@ public class PlayerBattle : MonoBehaviour
         countAttack++;
         if(countAttack == 1)
         {
+            FindObjectOfType<AudioManager>().Play("PlayerAttack1");
             anim.SetInteger("attack", 1);
         }
     }
@@ -106,6 +107,7 @@ public class PlayerBattle : MonoBehaviour
         {
             if(countAttack > 1)
             {
+                FindObjectOfType<AudioManager>().Play("PlayerAttack2");
                 anim.SetInteger("attack", 2);
             }else
             {

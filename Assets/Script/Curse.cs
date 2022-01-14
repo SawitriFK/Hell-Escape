@@ -57,7 +57,9 @@ public class Curse : MonoBehaviour
                 Health.playerHealth = -1;
                 Health.playerMaxHealth = -1;
                 GameManager.playerDead = true;
-                anim.SetTrigger("die");       
+                GameManager.whyDead = GameManager.CauseOfDeath.Curse;
+                anim.SetTrigger("die");
+                FindObjectOfType<AudioManager>().Play("PlayerDie");       
                 return;
             }
             curseBar.SetMaxValue(curseLevel[currCurseLv]);

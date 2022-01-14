@@ -184,7 +184,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 0}
-  maxHelth: 14000
+  maxHelth: 2500
   boss: 1
   dead: 0
   iFrameDuration: 0.4
