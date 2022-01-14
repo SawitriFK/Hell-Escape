@@ -31,7 +31,7 @@ public class CycloneSkill : MonoBehaviour
         {
             if (transform.localScale.x < 0f)
             {
-                return 180;
+                return -180;
             }
             else
             {
@@ -40,7 +40,7 @@ public class CycloneSkill : MonoBehaviour
         }
 
         GameObject newCyclone = Instantiate(cyclone, midlePos.position, Quaternion.identity);
-        newCyclone.transform.Rotate(0, 0, direction());
+        newCyclone.transform.Rotate(0, direction(), 0);
 
 
 

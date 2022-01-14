@@ -73,11 +73,11 @@ public class OptionSkill : MonoBehaviour
     {
 
 
-        if (Input.GetKey(KeyCode.P))
+/*        if (Input.GetKey(KeyCode.P))
         {
             menuSkill.SetActive(true);
             Time.timeScale = 0f;
-        }
+        }*/
 
         playerSkillUI();
     }
@@ -120,7 +120,11 @@ public class OptionSkill : MonoBehaviour
                 }
             }
         }
-        switchSkill(tempSkill[opsi]);
+        if(allSkill[findSkill(tempSkill[opsi])].typePasif == true)
+        {
+            switchSkill(tempSkill[opsi]);
+        }
+        
         menuSkill.SetActive(false);
         Time.timeScale = 1;
         generateSkill();
