@@ -4952,8 +4952,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PortalHint: {fileID: 1806301821}
-  BoxHint: {fileID: 0}
-  MenuSkillHint: {fileID: 0}
+  BoxHint: {fileID: 168529367}
+  MenuSkillHint: {fileID: 1940134083}
 --- !u!114 &1513162607
 MonoBehaviour:
   m_ObjectHideFlags: 0
