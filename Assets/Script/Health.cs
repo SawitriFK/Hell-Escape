@@ -44,7 +44,8 @@ public class Health : MonoBehaviour
                 currentHealth = playerHealth;
                 healthBar.SetValue(currentHealth); 
             }
-        }else
+        }
+        else
         {
             if(boss)
             {

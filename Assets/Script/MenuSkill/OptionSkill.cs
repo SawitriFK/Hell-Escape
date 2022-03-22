@@ -16,6 +16,7 @@ public class OptionSkill : MonoBehaviour
         public string Description;
         public Sprite Icon;
         public bool typePasif;
+        public int Mana;
     }
 
     [Serializable]
@@ -40,8 +41,13 @@ public class OptionSkill : MonoBehaviour
     //public KindSkill kindSkill;
 
     //Skill Pilihan
-    [SerializeField]
-    public string[] skillPlayer = new string[3];
+/*    [SerializeField]
+    public string[] skillPlayer = new string[3];*/
+
+    public List<String> logy = new List<String>();
+    public static List<string> log = new List<string>();
+    int logyCount = 2;
+
 
     // UI Skill Player
     public Image[] skillUIPlayer = new Image[3];
@@ -58,6 +64,7 @@ public class OptionSkill : MonoBehaviour
     public Health healthForMax;
     public Curse curseForMin;
     public PlayerBattle battleForDamage;
+    public Mana manaSkill;
 
     private void Awake()
     {
@@ -67,17 +74,54 @@ public class OptionSkill : MonoBehaviour
     private void Start()
     {
         generateSkill();
+
+        if(log.Count > 0)
+        {
+            logy = log;
+        }
+
     }
 
     private void Update()
     {
+        if (Input.GetKey(KeyCode.P))
+        {
+            /*            for (int a = 0; a < skillPlayer.Length; a++)
+                        {
+                            if(skillPlayer[a] == "")
+                            {
+                                Debug.Log("Ada Kosong = " + a);
+                            }
+                            else
+                            {
+                                Debug.Log("Tidak Kosng = " + a);
+                            }
+                        }*/
 
+            if (log.Count == 0)
+            {
+                Debug.Log(" Kosong = ");
+            }
+            else
+            {
+                Debug.Log("Tidak Kosng = " );
+            }
 
-/*        if (Input.GetKey(KeyCode.P))
+            if (logy.Count == 0)
+            {
+                Debug.Log("Y Ada Kosong = ");
+            }
+            else
+            {
+                Debug.Log("Y Tidak Kosng = ");
+            }
+        }
+
+        if (Input.GetKey(KeyCode.O))
         {
             menuSkill.SetActive(true);
             Time.timeScale = 0f;
-        }*/
+        }
 
         playerSkillUI();
     }
@@ -92,7 +136,7 @@ public class OptionSkill : MonoBehaviour
             
             if(checkPlayerSkill(allSkill[z].Name) == false && indTS < 3)
             {
-                Debug.Log(indTS);
+                //Debug.Log(indTS);
                 tempSkill[indTS] = allSkill[z].Name;
 
                 allSkillUI[indTS].Name.text = allSkill[findSkill(tempSkill[indTS])].Name;
@@ -111,20 +155,36 @@ public class OptionSkill : MonoBehaviour
     {
         if (allSkill[findSkill(tempSkill[opsi])].typePasif == false && checkPlayerSkill(tempSkill[opsi]) == false)
         {
-            for (int i = 0; i < skillPlayer.Length; i++)
+/*            for (int i = 0; i < skillPlayer.Length; i++)
             {
                 if (skillPlayer[i] == "")
                 {
                     skillPlayer[i] = tempSkill[opsi];
                     break;
                 }
+            }*/
+
+            if (logy.Count >= logyCount)
+            {
+                logy.RemoveAt(0);
+                logy.Add(tempSkill[opsi]);
+                log.Add(tempSkill[opsi]);
+            }
+            else
+            {
+                logy.Add(tempSkill[opsi]);
+                log.Add(tempSkill[opsi]);
             }
         }
         if(allSkill[findSkill(tempSkill[opsi])].typePasif == true)
         {
             switchSkill(tempSkill[opsi]);
         }
-        
+/*       Melihat List
+ *       for (int a = 0; a < skillPlayer.Length; a++)
+        {
+            Debug.Log("adalah " + skillPlayer[a] + " uhu");
+        }*/
         menuSkill.SetActive(false);
         Time.timeScale = 1;
         generateSkill();
@@ -174,13 +234,23 @@ public class OptionSkill : MonoBehaviour
 
     public void playerSkillUI()
     {
-        int lengthSP = checkArrayLength(skillPlayer);
-        Debug.Log(lengthSP);
+        /*        int lengthSP = checkArrayLength(skillPlayer);
+                //Debug.Log(lengthSP);
+                if (lengthSP > 0)
+                {
+                    for (int i = 0; i < lengthSP; i++)
+                    {
+                        skillUIPlayer[i].sprite = allSkill[findSkill(skillPlayer[i])].Icon;
+                    }
+                }*/
+
+        int lengthSP = logy.Count;
+        //Debug.Log(lengthSP);
         if (lengthSP > 0)
         {
             for (int i = 0; i < lengthSP; i++)
             {
-                skillUIPlayer[i].sprite = allSkill[findSkill(skillPlayer[i])].Icon;
+                skillUIPlayer[i].sprite = allSkill[findSkill(logy[i])].Icon;
             }
         }
 
@@ -213,10 +283,20 @@ public class OptionSkill : MonoBehaviour
     public bool checkPlayerSkill(string cek)
     {
         bool _checkPlayerSkill = false;
-        for (int i = 0; i < skillPlayer.Length; i++)
+        /*        for (int i = 0; i < skillPlayer.Length; i++)
+                {
+                    //Apa pilihan opsi terdapat pada penyimpanan skill?
+                    if (cek == skillPlayer[i])
+                    {
+                        _checkPlayerSkill = true;
+                        break;
+                    }
+                }*/
+        
+        for (int i = 0; i < logy.Count; i++)
         {
             //Apa pilihan opsi terdapat pada penyimpanan skill?
-            if (cek == skillPlayer[i])
+            if (cek == logy[i])
             {
                 _checkPlayerSkill = true;
                 break;
@@ -227,8 +307,14 @@ public class OptionSkill : MonoBehaviour
 
     public void playerSkill(int skill)
     {
-        swithSkillActive(skillPlayer[skill]);
-
+        /*swithSkillActive(skillPlayer[skill]);*/
+/*        swithSkillActive(logy[skill]);*/
+        Debug.Log(allSkill[findSkill(logy[skill])].Mana);
+        bool activeMana = manaSkill.GetComponent<Mana>().UseSkill(allSkill[findSkill(logy[skill])].Mana);
+        if(activeMana == true)
+        {
+            swithSkillActive(logy[skill]);
+        }
         /*        for (int i = 0; i < allSkill.Length; i++)
                 {
                     if (skillPlayer[skill] == allSkill[].Name) ;

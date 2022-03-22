@@ -7,6 +7,8 @@ public class Bar : MonoBehaviour
 {
     public Slider slider;
 
+    public float fillAmount { get; internal set; }
+
     public void SetMaxValue(float value)
     {
         slider.maxValue = value;

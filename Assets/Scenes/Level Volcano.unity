@@ -466,7 +466,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 84.01695, y: 0.000015258789}
+  m_AnchoredPosition: {x: 84.016846, y: 0.000015258789}
   m_SizeDelta: {x: 100, y: 320}
   m_Pivot: {x: 0.00000020675361, y: 0.52155644}
 --- !u!114 &146836079
@@ -3175,23 +3175,28 @@ MonoBehaviour:
     Description: Kemampuan untuk memaksimalkan Health pada pemain
     Icon: {fileID: 21300000, guid: f1162610a916a4a4abe447e98cb91d6a, type: 3}
     typePasif: 1
+    Mana: 0
   - Name: Damage ++
     Description: Menambah Damage bertarung pemain untuk memperce[at kematian musuh
     Icon: {fileID: 21300000, guid: cf0dba540b589404a835c072aebd1870, type: 3}
-    typePasif: 1
+    typePasif: 0
+    Mana: 0
   - Name: Curse Reduction
     Description: Mengurangi Curse pemain kemabli menjadi 0
     Icon: {fileID: 21300000, guid: f2a26dd2f04c1b94b835c670d084c72d, type: 3}
-    typePasif: 1
+    typePasif: 0
+    Mana: 0
   - Name: Fireball
     Description: Kemapuan untuk menembakkan bola api ke musuh sebagai serangan jarak
       jauh
     Icon: {fileID: 21300000, guid: f62f3b5d7869fba4484d3b9fc7e02693, type: 3}
     typePasif: 0
+    Mana: 20
   - Name: Cyclone
     Description: Kemapuan untuk melukai musuh disekitar pemain menggukan topan
     Icon: {fileID: 21300000, guid: 22bf255c218a4904dac4b677709b56db, type: 3}
     typePasif: 0
+    Mana: 50
   allSkillUI:
   - Name: {fileID: 1300900197}
     Description: {fileID: 347786089}
@@ -3207,10 +3212,7 @@ MonoBehaviour:
   - 
   - 
   - 
-  skillPlayer:
-  - 
-  - 
-  - 
+  logy: []
   skillUIPlayer:
   - {fileID: 740680232}
   - {fileID: 1180105952}
@@ -3220,6 +3222,7 @@ MonoBehaviour:
   healthForMax: {fileID: 1415350496}
   curseForMin: {fileID: 1415350500}
   battleForDamage: {fileID: 1415350505}
+  manaSkill: {fileID: 1415350508}
 --- !u!1 &1017014406
 GameObject:
   m_ObjectHideFlags: 0
@@ -4132,6 +4135,7 @@ GameObject:
   - component: {fileID: 1415350503}
   - component: {fileID: 1415350506}
   - component: {fileID: 1415350507}
+  - component: {fileID: 1415350508}
   m_Layer: 9
   m_Name: Player
   m_TagString: player
@@ -4450,6 +4454,21 @@ MonoBehaviour:
   shootTimer: 0.5
   shootPos: {fileID: 738635627}
   fireball: {fileID: 729973124046739428, guid: 741c954cad35d9440b1ddd8ac1b595cd, type: 3}
+--- !u!114 &1415350508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1415350493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bfb4fca7e32e0747ba15cd876c6aeea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  manaBar: {fileID: 583158430}
+  maxMana: 100
+  currentMana: 0
 --- !u!1 &1428647418
 GameObject:
   m_ObjectHideFlags: 0
@@ -4772,7 +4791,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.000061035156}
+  m_AnchoredPosition: {x: 0, y: -0.00012207031}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1485269029

@@ -9,8 +9,14 @@ public class Mana : MonoBehaviour
     [SerializeField] private float currentMana;
     public static float playerMana = -1;
     public static float playerMaxMana = -1;
+    private float to = 5f;
+    private float st;
+
+    private float calculateLife;
     void Start()
     {
+        st = to;
+
         if (playerMaxMana == -1)
         {
             playerMaxMana = maxMana;
@@ -21,6 +27,8 @@ public class Mana : MonoBehaviour
         }
 
         manaBar.SetMaxValue(playerMaxMana);
+
+
         if (playerMana == -1)
         {
             currentMana = maxMana;
@@ -33,24 +41,38 @@ public class Mana : MonoBehaviour
         }
     }
 
-    public void UseSkill(float useMana)
+    void Update()
     {
-        float _maxMana = maxMana;
-        bool emptyMana = false;
-        currentMana -= useMana;
-
+        if( currentMana < maxMana)
+        {
+            currentMana += 1 * Time.deltaTime;
+            playerMana = currentMana;
+            manaBar.SetValue(currentMana);
+        }
         if(currentMana > maxMana)
         {
-            manaBar.SetValue(maxMana);
+            currentMana = maxMana;
+            playerMana = currentMana;
+            manaBar.SetValue(currentMana);
+        }
+    }
+
+    public bool UseSkill(float _manaSkill)
+    {
+
+        if(currentMana > _manaSkill)
+        {
+            currentMana -= _manaSkill;
+            playerMana = currentMana;
+            manaBar.SetValue(currentMana);
+            return true;
+        }
+        else
+        {
+            return false;
         }
         
-
-
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
