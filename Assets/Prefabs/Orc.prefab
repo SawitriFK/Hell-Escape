@@ -188,6 +188,7 @@ MonoBehaviour:
   maxHelth: 350
   boss: 0
   dead: 0
+  currentHealth: 0
   iFrameDuration: 0.4
   numberOfFlashes: 3
 --- !u!1 &6269331857329890300

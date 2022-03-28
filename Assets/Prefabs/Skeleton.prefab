@@ -103,7 +103,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 20
   m_Sprite: {fileID: 21300000, guid: 9bd409db8c07dcd48a96a407ca5e55aa, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -202,6 +202,7 @@ MonoBehaviour:
     m_Bits: 512
   Coin: {fileID: 4628717098923819256, guid: 1108b3ad5b4826d44bb9b10ff9942706, type: 3}
   dropChance: 0.316
+  skillActive: {fileID: 0}
 --- !u!114 &8590773878514956364
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -216,6 +217,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthBar: {fileID: 0}
   maxHelth: 200
+  boss: 0
   dead: 0
+  currentHealth: 0
   iFrameDuration: 0.4
   numberOfFlashes: 3

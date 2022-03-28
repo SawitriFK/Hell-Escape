@@ -36,6 +36,7 @@ public class GrimreaperBossController : EnemyController
     {
         base.Start();
         bossHealth = gameObject.GetComponent<Health>();
+
         GameObject.Find("Game Manager").GetComponent<GameManager>().allEnemySpawned();
     }
 
@@ -77,6 +78,7 @@ public class GrimreaperBossController : EnemyController
 
     protected override void Attack()
     {
+
         attacking = true;
         body.velocity = new Vector2(0.0f, body.velocity.y);
         animator.SetBool("isMove", false);
@@ -99,6 +101,7 @@ public class GrimreaperBossController : EnemyController
                 curseDamage = curseDamageSpecial2;
                 break; 
         }
+
     }
 
     protected override bool checkAttackAnimRunning()

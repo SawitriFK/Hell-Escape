@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour
             int rand = Random.Range(0,levelPrefab.Length-1);
             Instantiate(levelPrefab[rand], levelPrefab[rand].transform.position, levelPrefab[rand].transform.rotation);
         }
-        GameObject.Find("UICanvas").GetComponent<Animator>().SetTrigger("fadein");
+        
     }
     
     // Start is called before the first frame update
@@ -50,11 +50,16 @@ public class GameManager : MonoBehaviour
     {
         playerHealth = Player.GetComponent<Health>();
         playerCurse = Player.GetComponent<Curse>();
+        GameObject.Find("UICanvas").GetComponent<Animator>().SetTrigger("fadein");
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKey(KeyCode.Y))
+        {
+            GameObject.Find("UICanvas").GetComponent<Animator>().SetTrigger("fadein");
+        }
         if(Player == null)
         {
             return;

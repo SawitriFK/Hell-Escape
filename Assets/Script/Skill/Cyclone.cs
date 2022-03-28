@@ -12,9 +12,9 @@ public class Cyclone : MonoBehaviour
     Transform nextPos;
     void Start()
     {
-        //isReverse = true;
+        FindObjectOfType<AudioManager>().Play("PlayerCyclone");
         StartCoroutine(Timer());
-        //Die();
+        
         nextPos = wapPoints[0];
     }
 
@@ -62,6 +62,7 @@ public class Cyclone : MonoBehaviour
 
     void Die()
     {
+        FindObjectOfType<AudioManager>().Stop("PlayerCyclone");
         Destroy(gameObject);
     }
 }

@@ -5,12 +5,14 @@ using UnityEngine;
 public class Fireball : MonoBehaviour
 {
 
-    public float dieTime = 5f;
+    public float dieTime = 4f;
     private Animator anim;
     // Start is called before the first frame update
+    private float thrust = 5f;
     void Start()
     {
         anim = GetComponent<Animator>();
+        FindObjectOfType<AudioManager>().Play("PlayerFireball");
         StartCoroutine(Timer());
     }
 
@@ -26,7 +28,20 @@ public class Fireball : MonoBehaviour
         {
             if (collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))
             {
-                collision.GetComponent<Health>().TakeDamage(200);
+                Rigidbody2D enemy = collision.GetComponent<Rigidbody2D>();
+                if(enemy != null){
+                    enemy.isKinematic = false;
+                    Vector2 difference = new Vector2(enemy.transform.position.x - transform.position.x, 0);
+                    difference = difference.normalized * thrust;
+                    enemy.AddForce(difference, ForceMode2D.Impulse);
+                    enemy.isKinematic = true;
+                    collision.GetComponent<Health>().TakeDamage(200);
+
+                }
+
+
+
+                
             }
             Die();
         } 

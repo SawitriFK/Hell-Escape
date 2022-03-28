@@ -30,6 +30,9 @@ public class EnemyController: MonoBehaviour
     public GameObject Coin;
     [Range(0, 1f)][SerializeField] protected float dropChance = 0.0f;
 
+    [Header("Shield Damage")]
+    [SerializeField]protected SkillActive skillActive;
+
     protected Health playerHealth;
     protected Curse playerCurse;
     protected PlayerMovement playerMovement;
@@ -63,6 +66,8 @@ public class EnemyController: MonoBehaviour
         playerCurse = target.GetComponent<Curse>();
         playerMovement = target.GetComponent<PlayerMovement>();
         attackAnim = gameObject.name.Replace("(Clone)","").Trim() + "Attack";
+        skillActive = target.GetComponent<SkillActive>();
+        
     }
 
     protected virtual void Update()
@@ -130,8 +135,12 @@ public class EnemyController: MonoBehaviour
     {
         if(PlayerInRange() && !playerMovement.invinsible)
         {
-            playerHealth.TakeDamage(damage);
-            playerCurse.TakeCurseDamage(curseDamage);
+            if(skillActive.shieldActive == false)
+            {
+                playerHealth.TakeDamage(damage);
+                playerCurse.TakeCurseDamage(curseDamage);
+            }
+
         }
     }
 

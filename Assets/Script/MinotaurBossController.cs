@@ -36,6 +36,7 @@ public class MinotaurBossController : EnemyController
     private Health bossHealth;
     private AttackVariant attackNow; 
 
+
     protected override void Start()
     {
         base.Start();
@@ -87,33 +88,33 @@ public class MinotaurBossController : EnemyController
 
     protected override void Attack()
     {
-        attacking = true;
-        body.velocity = new Vector2(0.0f, body.velocity.y);
-        animator.SetBool("isMove", false);
-        FindObjectOfType<AudioManager>().Play("MinotaurAttack");
-        switch(attackNow)
-        {
-            case AttackVariant.Jab :
-                animator.SetTrigger("attack1");
-                damage = damageJab;
-                curseDamage = curseDamageJab;
-                break;
-            case AttackVariant.Crush :
-                animator.SetTrigger("attack1");
-                damage = damageCrush;
-                curseDamage = curseDamageCrush;
-                break;
-            case AttackVariant.Axe :
-                animator.SetTrigger("attack2");
-                damage = damageAxe;
-                curseDamage = curseDamageAxe;
-                break;
-            case AttackVariant.Throw :
-                animator.SetTrigger("attack2");
-                damage = damageThrow;
-                curseDamage = curseDamageThrow;
-                break; 
-        }
+            attacking = true;
+            body.velocity = new Vector2(0.0f, body.velocity.y);
+            animator.SetBool("isMove", false);
+            FindObjectOfType<AudioManager>().Play("MinotaurAttack");
+            switch(attackNow)
+            {
+                case AttackVariant.Jab :
+                    animator.SetTrigger("attack1");
+                    damage = damageJab;
+                    curseDamage = curseDamageJab;
+                    break;
+                case AttackVariant.Crush :
+                    animator.SetTrigger("attack1");
+                    damage = damageCrush;
+                    curseDamage = curseDamageCrush;
+                    break;
+                case AttackVariant.Axe :
+                    animator.SetTrigger("attack2");
+                    damage = damageAxe;
+                    curseDamage = curseDamageAxe;
+                    break;
+                case AttackVariant.Throw :
+                    animator.SetTrigger("attack2");
+                    damage = damageThrow;
+                    curseDamage = curseDamageThrow;
+                    break; 
+            }
     }
 
     protected override bool checkAttackAnimRunning()

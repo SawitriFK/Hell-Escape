@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Box : MonoBehaviour
 {
-    private bool isEnter;
+    public bool isEnter;
     private GameObject text;
     private GameObject OptionSkill;
     //private GameObject menuSkill;
@@ -34,13 +34,12 @@ public class Box : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    private void OnTriggerExit2D (Collider2D collision)
     {
-        if (collision.gameObject.tag == "player")
+        if(collision.gameObject.tag == "player")
         {
             text.SetActive(false);
             isEnter = false;
-            
         }
     }
 
@@ -50,7 +49,6 @@ public class Box : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.E) && clik < 1)
             {
-                Debug.Log("Buka Menu = " + clik);
                 MenuSkill.SetActive(true);
                 clik++;
             }
