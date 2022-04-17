@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Cyclone : MonoBehaviour
 {
+    public float damageCyclone;
     public float dieTime;
     public float spinSpeed;
 
@@ -46,7 +47,7 @@ public class Cyclone : MonoBehaviour
         {
             if (collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))
             {
-                collision.GetComponent<Health>().TakeDamage(200);
+                collision.GetComponent<Health>().TakeDamage(damageCyclone);
             }
 
             

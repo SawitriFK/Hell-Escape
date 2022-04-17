@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Fireball : MonoBehaviour
 {
-
+    public float damageFireball;
     public float dieTime = 4f;
     private Animator anim;
     // Start is called before the first frame update
@@ -35,7 +35,7 @@ public class Fireball : MonoBehaviour
                     difference = difference.normalized * thrust;
                     enemy.AddForce(difference, ForceMode2D.Impulse);
                     enemy.isKinematic = true;
-                    collision.GetComponent<Health>().TakeDamage(200);
+                    collision.GetComponent<Health>().TakeDamage(damageFireball);
 
                 }
 

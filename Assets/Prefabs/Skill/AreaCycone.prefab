@@ -132,6 +132,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f360d5d6dbee2434ab7a85becf3d0a75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageCyclone: 180
   dieTime: 5
   spinSpeed: 10
   wapPoints:

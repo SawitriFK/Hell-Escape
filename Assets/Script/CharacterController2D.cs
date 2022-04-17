@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class CharacterController2D : MonoBehaviour
 {
@@ -36,6 +37,9 @@ public class CharacterController2D : MonoBehaviour
 	[Space]
 
 	public UnityEvent OnLandEvent;
+
+	// [Header("Control")]
+	// public Button buttonJump; //using UnityEngine.UI;
 
 	[System.Serializable]
 	public class BoolEvent : UnityEvent<bool> { }
@@ -86,10 +90,20 @@ public class CharacterController2D : MonoBehaviour
 				m_Rigidbody2D.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
 			}else
 			{
-				if(Input.GetButton("Jump"))
+				// buttonJump.onClick.AddListener(() =>
+				// {
+				// 	m_Rigidbody2D.velocity += Vector2.up * Physics2D.gravity.y * (floatMultiplier - 1) * Time.deltaTime;
+				// });
+				// Ganti Jum FOrece = 500
+				if(Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
 				{
 					m_Rigidbody2D.velocity += Vector2.up * Physics2D.gravity.y * (floatMultiplier - 1) * Time.deltaTime;
 				}
+				// Ganti Jum FOrece = 470
+				// if(Input.GetButton("Jump"))
+				// {
+				// 	m_Rigidbody2D.velocity += Vector2.up * Physics2D.gravity.y * (floatMultiplier - 1) * Time.deltaTime;
+				// }
 			}
 		}
 
@@ -141,8 +155,9 @@ public class CharacterController2D : MonoBehaviour
 
 			Collider2D adaColl = Physics2D.Raycast(raycast.position, dir, distance, ~enemyLayer).collider;
 			
-			if(adaColl == null)
+			if(adaColl == null && move != 0)
 			{
+				PlayerMovement.buttonRun.interactable = false;
 				transform.position += dir * distance;
 			}
 		}

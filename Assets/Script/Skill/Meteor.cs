@@ -5,6 +5,7 @@ using UnityEngine;
 public class Meteor : MonoBehaviour
 {
 
+    public float damageMeteor;
     public float dieTime = 4f;
     private Animator anim;
     Rigidbody2D rb;
@@ -34,7 +35,7 @@ public class Meteor : MonoBehaviour
                 FindObjectOfType<AudioManager>().Stop("PlayerMeteorFall");
                 FindObjectOfType<AudioManager>().Play("PlayerMeteorExplosion");
                 anim.SetTrigger("explosion");
-                collision.GetComponent<Health>().TakeDamage(200);
+                collision.GetComponent<Health>().TakeDamage(damageMeteor);
    
             }
 

@@ -16,14 +16,20 @@ public class PauseMenu : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Escape) && valid)
         {
-            if(isPaused)
-            {
-                Resume();
-            }else
-            {
-                Pause();
+            if(SceneManager.GetActiveScene().buildIndex == 6){
+                MainMenu();
+            }
+            else{
+                    if(isPaused)
+                {
+                    Resume();
+                }else
+                {
+                    Pause();
+                }
             }
         }
+
     }
 
     private void Pause()
@@ -56,6 +62,9 @@ public class PauseMenu : MonoBehaviour
     {
         if(GameManager.playerDead)
         {
+            Debug.Log("Gameover?");
+            Debug.Log(GameManager.whyDead);
+            Debug.Log(GameManager.CauseOfDeath.Health);
             switch(GameManager.whyDead)
             {
                 case GameManager.CauseOfDeath.Health :
@@ -70,7 +79,8 @@ public class PauseMenu : MonoBehaviour
             gameObject.GetComponent<Animator>().SetTrigger("gameover");
             FindObjectOfType<AudioManager>().Play("GameOverTheme");
             valid = false;
-        }else
+        }
+        else
         {
             if(GameManager.level < GameManager.maxLevel)
             {

@@ -44,6 +44,9 @@ public class EnemyController: MonoBehaviour
     protected Vector3 wayPointPos;
     protected string attackAnim;
 
+    public bool ry;
+    public bool gd;
+
 
     protected virtual void Start()
     {
@@ -81,6 +84,9 @@ public class EnemyController: MonoBehaviour
         {
             Move();
         }
+
+        ry = isColli();
+        gd = isGrounded();
     }
 
     protected void Flip()
@@ -92,7 +98,7 @@ public class EnemyController: MonoBehaviour
 
     protected bool isGrounded()
     {
-        RaycastHit2D raycastHit = Physics2D.Raycast(groundDetect.position, Vector2.down, disRay);
+        RaycastHit2D raycastHit = Physics2D.Raycast(groundDetect.position, Vector2.down, disRay, groundLayer);
         return raycastHit.collider != null;
     }
 
@@ -115,7 +121,6 @@ public class EnemyController: MonoBehaviour
             Physics2D.BoxCast(capsuleCollider.bounds.center + transform.right * range * transform.localScale.x * colliderDistance,
             new Vector3(capsuleCollider.bounds.size.x * range, capsuleCollider.bounds.size.y, capsuleCollider.bounds.size.z),
             0, Vector2.left, 0, playerLayer);
-
 
         return hit.collider != null;
     }
@@ -163,29 +168,43 @@ public class EnemyController: MonoBehaviour
 
         if (!isGrounded() || isColli())
         {
+
             if(!GameManager.playerDead)
             {
+
                 float dir = target.transform.position.x - transform.position.x;
                 if (facingRight)
                 {
+
                     if(dir > 0 && Mathf.Abs(dir) < patrolDistance)
                     {
+
                         return;
                     }
+                    
+                    
                     facingRight = false;
                     Flip();
+
                 }
                 else
                 {
+
                     if(dir < 0 && Mathf.Abs(dir) < patrolDistance)
                     {
+
                         return;
                     }
+                    
                     facingRight = true;
                     Flip();
+                    
+
+
                 }
             }else
             {
+
                 if (facingRight)
                 {
                     facingRight = false;
@@ -197,8 +216,10 @@ public class EnemyController: MonoBehaviour
                     Flip();
                 }
             }
-        }else if(!GameManager.playerDead && Vector2.Distance(transform.position, target.transform.position) < patrolDistance)
+        }
+        else if(!GameManager.playerDead && Vector2.Distance(transform.position, target.transform.position) < patrolDistance)
         {
+
             body.velocity = new Vector2(0.0f, body.velocity.y);
             wayPointPos = new Vector3(target.transform.position.x, transform.position.y, transform.position.z);
 
@@ -212,13 +233,16 @@ public class EnemyController: MonoBehaviour
             {
                 facingRight = true;
                 Flip();
-            }else if(posThisFrame.x < posLastFrame.x && facingRight)
+            }
+            else if(posThisFrame.x < posLastFrame.x && facingRight)
             {
                 facingRight = false;
                 Flip();
             }
-        }else
+        }
+        else
         {
+
             if(facingRight)
             {
                 body.velocity = new Vector2(speedWalk, body.velocity.y);

@@ -45,7 +45,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sounds:
   - name: OpeningTheme
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: bf9c6585411155147a6b87ff089622f8, type: 3}
     loop: 1
     source: {fileID: 0}
   - name: BattleTheme
@@ -53,74 +53,98 @@ MonoBehaviour:
     loop: 1
     source: {fileID: 0}
   - name: EndingTheme
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: cece9b20086c475409d23cce1efe2cf8, type: 3}
     loop: 1
     source: {fileID: 0}
   - name: GameOverTheme
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 01bd74d0d2743664f8009ed4771fa951, type: 3}
     loop: 1
     source: {fileID: 0}
   - name: PlayerAttack1
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 428f6b607031a7b40be802dc0fef6ae0, type: 3}
     loop: 0
     source: {fileID: 0}
   - name: PlayerAttack2
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 2b06299022b9c9e43979fd42144d9923, type: 3}
     loop: 0
     source: {fileID: 0}
   - name: PlayerLompat
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 76f445be63012b247af716e45d983d09, type: 3}
     loop: 0
     source: {fileID: 0}
   - name: PlayerDamaged
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 0079972ad6fddb84f80a55b25974920c, type: 3}
     loop: 0
     source: {fileID: 0}
   - name: PlayerFall
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 61b47f4ad85267649916f50e3854f469, type: 3}
     loop: 0
     source: {fileID: 0}
   - name: PlayerFireball
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 79b1594687431cf4aa1f4cf68b9f5fad, type: 3}
     loop: 0
     source: {fileID: 0}
   - name: PlayerDie
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 12c8e72e41e856d4aa7e7e388845f87c, type: 3}
     loop: 0
     source: {fileID: 0}
   - name: EnemyAttack
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 2d03bdfd83c0a964a9e030bb6898314c, type: 3}
     loop: 0
     source: {fileID: 0}
   - name: EnemyDamaged
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: e13494cb0ca086844832283304a7e788, type: 3}
     loop: 0
     source: {fileID: 0}
   - name: EnemyDie
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: d73968a42925919418f97d0ae4e4b96e, type: 3}
     loop: 0
     source: {fileID: 0}
   - name: MinotaurAttack
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 59e17aa51b793c8419eb56f93e700631, type: 3}
     loop: 0
     source: {fileID: 0}
   - name: MinotaurDamaged
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 79e496840e1fb314fb8211abf7047892, type: 3}
     loop: 0
     source: {fileID: 0}
   - name: MinotaurDie
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: b40c0d15b43358649a26caa048416f8c, type: 3}
     loop: 0
     source: {fileID: 0}
   - name: GrimreaperAttack
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 59e17aa51b793c8419eb56f93e700631, type: 3}
     loop: 0
     source: {fileID: 0}
   - name: GrimreaperDamaged
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 79e496840e1fb314fb8211abf7047892, type: 3}
     loop: 0
     source: {fileID: 0}
   - name: GrimreaperDie
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: b40c0d15b43358649a26caa048416f8c, type: 3}
     loop: 0
+    source: {fileID: 0}
+  - name: PlayerMeteorFall
+    clip: {fileID: 8300000, guid: 6cb822e7780840f41a2eaa353c1d097a, type: 3}
+    loop: 0
+    source: {fileID: 0}
+  - name: PlayerMeteorExplosion
+    clip: {fileID: 8300000, guid: 752a7c25e6725bb43ac44293465eb49a, type: 3}
+    loop: 0
+    source: {fileID: 0}
+  - name: PlayerShield
+    clip: {fileID: 8300000, guid: 54db7e10c7b8b1046997c1195a4e0837, type: 3}
+    loop: 1
+    source: {fileID: 0}
+  - name: PlayerCyclone
+    clip: {fileID: 8300000, guid: 61726a0d372858e4b99309c180628ee5, type: 3}
+    loop: 1
+    source: {fileID: 0}
+  - name: StoryEndingTheme
+    clip: {fileID: 8300000, guid: 01d9aa772475d1345b76e0455b19f695, type: 3}
+    loop: 1
+    source: {fileID: 0}
+  - name: StoryOpeningTheme
+    clip: {fileID: 0}
+    loop: 1
     source: {fileID: 0}

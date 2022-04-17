@@ -187,6 +187,7 @@ MonoBehaviour:
   maxHelth: 2500
   boss: 1
   dead: 0
+  currentHealth: 0
   iFrameDuration: 0.4
   numberOfFlashes: 3
 --- !u!114 &5075673218736051905
@@ -220,18 +221,21 @@ MonoBehaviour:
     m_Bits: 512
   Coin: {fileID: 4628717098923819256, guid: 1108b3ad5b4826d44bb9b10ff9942706, type: 3}
   dropChance: 1
+  skillActive: {fileID: 0}
+  ry: 0
+  gd: 0
   speedWalkPhase2: 4
   attackCooldownPhase2: 1
-  damageAttack: 20
+  damageAttack: 60
   rangeAttack: 1.48
-  curseDamageAttack: 20
+  curseDamageAttack: 60
   colliderDistanceAttack: 0.58
-  damageSpecial1: 70
+  damageSpecial1: 110
   rangeSpecial1: 3.86
-  curseDamageSpecial1: 50
+  curseDamageSpecial1: 100
   colliderDistanceSpecial1: 0.89
-  damageSpecial2: 100
+  damageSpecial2: 160
   rangeSpecial2: 3.85
-  curseDamageSpecial2: 90
+  curseDamageSpecial2: 160
   colliderDistanceSpecial2: 1.08
   visualizeAttack: 0

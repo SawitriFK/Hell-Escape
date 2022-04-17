@@ -15,9 +15,15 @@ EditorBuildSettings:
     path: Assets/Scenes/Level Cave.unity
     guid: 5ffdabecfd47e9347a0fb601c49840ac
   - enabled: 1
+    path: Assets/Scenes/Story Ending.unity
+    guid: 5f1e56194e7930a4bad97e7fdde7751c
+  - enabled: 1
     path: Assets/Scenes/Ending.unity
     guid: 347282693e25bd04bb34e529bd0cd82f
   - enabled: 1
     path: Assets/Scenes/Credits.unity
     guid: cfbde1b33a320b448af389e6b2dc2761
+  - enabled: 1
+    path: Assets/Scenes/How To Play.unity
+    guid: 7ff647cdf126cc6489f165d2ded6ec4c
   m_configObjects: {}

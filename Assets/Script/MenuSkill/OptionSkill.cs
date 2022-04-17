@@ -58,7 +58,7 @@ public class OptionSkill : MonoBehaviour
     // Skill
     public Health healthForMax;
     public Curse curseForMin;
-    public PlayerBattle battleForDamage;
+    public Mana manaForMax;
     
     
 
@@ -99,7 +99,6 @@ public class OptionSkill : MonoBehaviour
             
             if(checkPlayerSkill(allSkill[z].Name) == false && indTS < 3)
             {
-                //Debug.Log(indTS);
                 tempSkill[indTS] = allSkill[z].Name;
 
                 allSkillUI[indTS].Name.text = allSkill[findSkill(tempSkill[indTS])].Name;
@@ -174,8 +173,8 @@ public class OptionSkill : MonoBehaviour
             case "Curse Reduction":
                 curseMin();
                 break;
-            case "Damage ++":
-                plusDamage();
+            case "Mana Max":
+                manaMax();
                 break;
             /*            case "Skill 2":
                             kindSkill.speedMax();
@@ -277,13 +276,11 @@ public class OptionSkill : MonoBehaviour
     public void curseMin()
     {
 
-        curseForMin.TakeCurseDamage(-200);
+        // curseForMin.TakeCurseDamage(-200);
+        curseForMin.resetCurse();
     }
-    public void plusDamage()
-    {
-
-        battleForDamage.damage = battleForDamage.damage + 20;
-        battleForDamage.damage2 = battleForDamage.damage2 + 20;
+    public void manaMax(){
+        manaForMax.manaToMax();
     }
 }
 

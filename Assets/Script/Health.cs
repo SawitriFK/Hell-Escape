@@ -70,7 +70,8 @@ public class Health : MonoBehaviour
             playerHealth -= _damage;
             healthBar.SetValue(currentHealth);
             FindObjectOfType<AudioManager>().Play("PlayerDamaged");
-        }else if (this.gameObject.tag == "enemy")
+        }
+        else if (this.gameObject.tag == "enemy")
         {
             if(boss)
             {
@@ -97,7 +98,8 @@ public class Health : MonoBehaviour
         {
             StartCoroutine(Invunerability());
             // hurt
-        }else if(!dead)
+        }
+        else if(!dead)
         {
             if (this.gameObject.tag == "player")
             {
@@ -105,6 +107,9 @@ public class Health : MonoBehaviour
                 this.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
                 Curse.currentCurse = -1;
                 Curse.currCurseLv = -1;
+                Mana.playerMana = -1;
+                Mana.playerMaxMana = -1;
+                OptionSkill.skillPlayerGlobal.Clear();
                 playerHealth = -1;
                 playerMaxHealth = -1;
                 GameManager.playerDead = true;

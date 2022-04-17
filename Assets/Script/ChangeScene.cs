@@ -9,7 +9,7 @@ public class ChangeScene : MonoBehaviour
 
     public void StartGame()
     {
-        Debug.Log(SceneManager.GetActiveScene().buildIndex + 1);
+        // Debug.Log(SceneManager.GetActiveScene().buildIndex + 1);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
@@ -20,6 +20,11 @@ public class ChangeScene : MonoBehaviour
 
     public void Credits()
     {
-        SceneManager.LoadScene(4);
+        SceneManager.LoadScene(5);
+    }
+
+        public void HowToPlay()
+    {
+        SceneManager.LoadScene(6);
     }
 }

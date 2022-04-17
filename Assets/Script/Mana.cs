@@ -9,14 +9,15 @@ public class Mana : MonoBehaviour
     [SerializeField] private float currentMana;
     public static float playerMana = -1;
     public static float playerMaxMana = -1;
-    private float to = 5f;
-    private float st;
+    // public static string manaString = "Hail";
+
 
     private float calculateLife;
     void Start()
     {
-        st = to;
-
+        // Debug.Log("Mana = "+ playerMana);
+        // // Debug.Log("Current Mana = "+ currentMana);
+        // Debug.Log("String Mana= "+ manaString);
         if (playerMaxMana == -1)
         {
             playerMaxMana = maxMana;
@@ -38,22 +39,25 @@ public class Mana : MonoBehaviour
         {
             currentMana = playerMana;
             manaBar.SetValue(currentMana);
+            
         }
     }
 
-    void Update()
+    void FixedUpdate()
     {
-        if( currentMana < maxMana)
-        {
-            currentMana += 1 * Time.deltaTime;
-            playerMana = currentMana;
-            manaBar.SetValue(currentMana);
-        }
-        if(currentMana > maxMana)
-        {
-            currentMana = maxMana;
-            playerMana = currentMana;
-            manaBar.SetValue(currentMana);
+        if(playerMana != -1){
+            if( currentMana < maxMana)
+            {
+                currentMana += 1 * Time.deltaTime;
+                playerMana = currentMana;
+                manaBar.SetValue(currentMana);
+            }
+            if(currentMana > maxMana)
+            {
+                currentMana = maxMana;
+                playerMana = currentMana;
+                manaBar.SetValue(currentMana);
+            }
         }
     }
 
@@ -74,5 +78,10 @@ public class Mana : MonoBehaviour
         
     }
 
+    public void manaToMax(){
+            currentMana = maxMana;
+            playerMana = maxMana;
+            manaBar.SetValue(currentMana);
+    }
     // Update is called once per frame
 }

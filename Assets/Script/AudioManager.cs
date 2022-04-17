@@ -18,11 +18,12 @@ public class AudioManager : MonoBehaviour
             instance = this;
         }else
         {
-            if(CheckScene() == 0 || (CheckScene() == 1 && !isPlaying("BattleTheme")) || CheckScene() == 3)
+            if(CheckScene() == 0 || (CheckScene() == 1 && !isPlaying("BattleTheme")) || CheckScene() == 3 )
             {
                 Destroy(instance.gameObject);
                 instance = this;
-            }else
+            }
+            else
             {
                 Destroy(gameObject);
                 return;
@@ -41,13 +42,22 @@ public class AudioManager : MonoBehaviour
 
     void Start()
     {
+        Debug.Log(CheckScene());
         if(CheckScene() == 0)
         {
             Play("OpeningTheme");
-        }else if(CheckScene() == 3)
+        }
+        else if(CheckScene() == 3)
         {
             Play("EndingTheme");
-        }else if(CheckScene() == 1)
+            // Play("StoryEndingTheme");
+        }
+        // else if(CheckScene() == 4)
+        // {
+
+        //     Play("EndingTheme");
+        // }
+        else if(CheckScene() == 1 || CheckScene() == 2)
         {
             Play("BattleTheme");
         }

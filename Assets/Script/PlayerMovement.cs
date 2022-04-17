@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -11,7 +12,7 @@ public class PlayerMovement : MonoBehaviour
 
     float horizontalMove = 0f;
     float lastDashed = -2f;
-    public float dashCooldown = .6f;
+    public float dashCooldown = 3f;
     bool jump = false;
     bool dash = false;
     public bool invinsible = false;
@@ -20,32 +21,53 @@ public class PlayerMovement : MonoBehaviour
     private bool attack;
     private Animator anim;
 
+    public static Button buttonRun;
+
+    private bool moveLeft, moveRight;
+
     void Awake()
     {
+        GameObject ButtonLeft = GameObject.Find("UICanvas/ButtonRight/Run");
+        buttonRun = ButtonLeft.GetComponentInChildren<Button>();
         cooldown = dashCooldown;
     }
 
     void Update()
     {
         horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
+
+        if(moveLeft){
+            horizontalMove = -1 * runSpeed;
+        }
+        if(moveRight){
+            horizontalMove = 1 * runSpeed;
+        }
+        // if(clickAttack){
+        //     attack = true;
+        // }
         
-        if(Input.GetButtonDown("Jump")) 
+        if(Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W)) 
         {
             jump = true;
         }
+        // Ganti Jum FOrece = 470
+        // if(Input.GetButtonDown("Jump")) 
+        // {
+        //     jump = true;
+        // }
 
-        if(Input.GetButtonDown("Fire2") && cooldown <= 0)
-        {
-            lastDashed = Time.time;
-            dash = true;
-            cooldown = dashCooldown;
-            StartCoroutine(Invinsible());
-        }
+        // if(Input.GetButtonDown("Fire2") && cooldown <= 0)
+        // {
+        //     lastDashed = Time.time;
+        //     dash = true;
+        //     cooldown = dashCooldown;
+        //     StartCoroutine(Invinsible());
+        // }
 
-         if (Input.GetButtonDown("Fire1"))
-        {
-            attack = true;
-        }
+        //  if (Input.GetButtonDown("Fire1"))
+        // {
+        //     attack = true;
+        // }
 
         if(cooldown > 0)
         {
@@ -77,6 +99,7 @@ public class PlayerMovement : MonoBehaviour
         //yield on a new YieldInstruction that waits for 5 seconds.
         yield return new WaitForSeconds(dashCooldown * dashInvinsibleMultplier);
         invinsible = false;
+        buttonRun.interactable = true;
     }
 
     private void PlayerSkills_OnSkillUnlocked(object sender, PlayerSkills.OnSkillUnlockedEventArgs e)
@@ -87,6 +110,37 @@ public class PlayerMovement : MonoBehaviour
                 runSpeed *= 1.5f;
                 break;
         }
+    }
+
+    public void Jump(){
+        jump = true;
+    }
+    public void Run(){
+        if(cooldown <= 0.5){ // setelah menunggu cooldown, respose agak lama untuk di klik lagi (Awalnya cooldown <= 0)
+            lastDashed = Time.time;
+            dash = true;
+            cooldown = dashCooldown;
+            StartCoroutine(Invinsible());
+        }
+    }
+
+    public void ClickAttack(){
+        attack = true;
+    }
+    // public void StopAttack(){
+        
+    //     attack = false;
+    // }
+
+    public void WalkRight(){
+        moveRight = true;
+    }
+    public void WalkLeft(){
+        moveLeft = true;
+    }
+    public void StopMove(){
+        moveLeft = false;
+        moveRight = false;
     }
 
 }

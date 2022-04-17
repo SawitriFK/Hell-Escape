@@ -115,6 +115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b361d1351b42fe4b96400341767c891, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageFireball: 200
   dieTime: 5
 --- !u!70 &8295835931494110508
 CapsuleCollider2D:

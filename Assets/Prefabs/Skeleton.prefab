@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2541894949033113376}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.546, y: 0, z: 0}
+  m_LocalPosition: {x: 0.7, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8590773878514956370}
@@ -168,8 +168,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.060234696, y: -0.010540843}
-  m_Size: {x: 0.90427214, y: 2.2771666}
+  m_Offset: {x: -0.060234696, y: 0.058913827}
+  m_Size: {x: 0.90427214, y: 2.1382573}
   m_Direction: 0
 --- !u!114 &8590773878514956365
 MonoBehaviour:
@@ -194,7 +194,7 @@ MonoBehaviour:
   attackCooldown: 5
   range: 0.77
   damage: 15
-  curseDamage: 5
+  curseDamage: 10
   colliderDistance: 0.92
   capsuleCollider: {fileID: 8590773878514956366}
   playerLayer:
@@ -203,6 +203,8 @@ MonoBehaviour:
   Coin: {fileID: 4628717098923819256, guid: 1108b3ad5b4826d44bb9b10ff9942706, type: 3}
   dropChance: 0.316
   skillActive: {fileID: 0}
+  ry: 0
+  gd: 0
 --- !u!114 &8590773878514956364
 MonoBehaviour:
   m_ObjectHideFlags: 0

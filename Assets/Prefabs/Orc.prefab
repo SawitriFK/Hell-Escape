@@ -159,7 +159,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   groundDetect: {fileID: 1070455653150659210}
-  disRay: 4
+  disRay: 5
   patrolDistance: 10
   attackCooldown: 7
   range: 0.57
@@ -172,6 +172,9 @@ MonoBehaviour:
     m_Bits: 512
   Coin: {fileID: 4628717098923819256, guid: 1108b3ad5b4826d44bb9b10ff9942706, type: 3}
   dropChance: 0.425
+  skillActive: {fileID: 0}
+  ry: 0
+  gd: 0
 --- !u!114 &4162759729555200207
 MonoBehaviour:
   m_ObjectHideFlags: 0
